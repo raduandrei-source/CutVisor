@@ -21,7 +21,7 @@ CutWise is a Blender addon for timber structure projects. Assign part IDs to you
 | Viewport overlay (IDs, dimensions) | ✓ | ✓ |
 | CSV import/export | ✓ | ✓ |
 | Multi-language UI | ✓ | ✓ |
-| **Shopping List + Cut Optimizer** | — | ✓ |
+| **Shopping List + Cut Optimizer** | ✓ | ✓ |
 | **Cut settings** (kerf, rip, cross-cut) | — | ✓ |
 | **Multi-Board Splicing** | — | ✓ |
 | **Wood species presets** | — | ✓ |
