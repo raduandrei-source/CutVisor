@@ -1,6 +1,3 @@
-# CutWise
-Timber Optimization for Blender
-
 # CutWise — Timber Cut Optimizer for Blender
 
 **design & craft with minimum waste**
