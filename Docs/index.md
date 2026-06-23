@@ -1,4 +1,4 @@
-# **CutVisor — More Than a Plugin**
+# **CutVisor — More Than a Plugin** 
 
 ## Why CutVisor exists
 
