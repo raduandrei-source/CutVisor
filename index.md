@@ -2,16 +2,14 @@
 #cv-toc {
   position: fixed;
   top: 80px;
-  right: 24px;
+  left: 0;
   width: 230px;
   max-height: 78vh;
   overflow-y: auto;
   font-size: 13px;
   line-height: 1.5;
-  background: #f6f8fa;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
-  padding: 14px;
+  padding: 0 18px;
+  border-right: 1px solid #d0d7de;
   z-index: 100;
 }
 #cv-toc strong { display: block; margin-bottom: 8px; }
@@ -23,7 +21,11 @@
   #cv-toc { display: none; }
 }
 @media (min-width: 1151px) {
-  .markdown-body { padding-right: 280px; }
+  .markdown-body {
+    max-width: 760px !important;
+    margin-left: 290px !important;
+    margin-right: auto !important;
+  }
 }
 </style>
 
@@ -45,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+
+
 # **CutVisor — More Than a Plugin**
 
 ## Why CutVisor exists
