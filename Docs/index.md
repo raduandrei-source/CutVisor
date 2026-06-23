@@ -90,7 +90,7 @@ The result is a cut plan: which pieces go into which board, in what order, with 
 
 The kerf is the width of material removed by the saw blade with each cut. A typical circular saw blade removes 2–4mm of material per cut. If you ignore kerf in planning, pieces don't fit — a board calculated to hold exactly six 650mm pieces will actually hold only five once you account for five saw cuts consuming 15mm total.
 
-CutVisor deducts kerf after every cut except the first on each board (the first piece doesn't require a cut from the board end — it starts at zero). The default is 3mm, which covers most circular saw and table saw blades. For a bandsaw you might use 1–2mm; for a thick-kerf demolition blade, 4–5mm.
+CutVisor deducts kerf after every cut except the first on each board (the first piece doesn't require a cut from the board end — it starts at zero). The default is 2mm, which covers most circular saw and table saw blades. For a bandsaw you might use 1mm; for a thick-kerf demolition blade, 4–5mm.
 
 ### Stock length bonus
 
@@ -104,7 +104,7 @@ If you're unsure about your supplier's actual lengths, 15mm is a safe default fo
 
 CutVisor measures piece dimensions from the 3D model using an oriented bounding box — a method that gives correct results even for rotated or inclined objects. But measurements from 3D geometry are never perfect: rounding in the model, small floating-point differences, or the fact that wood dimensions vary by a millimetre or two in real life.
 
-The measurement tolerance handles this. With a tolerance of 2mm (the default), a piece measured at 152mm will match a 150mm stock profile. Without tolerance, it wouldn't match anything and would appear in the unmatched list.
+The measurement tolerance handles this. With a tolerance of 5mm (the default), a piece measured at 152mm will match a 150mm stock profile. Without tolerance, it wouldn't match anything and would appear in the unmatched list.
 
 Keep this value small — 1 to 3mm is appropriate for wood. Setting it to 50mm to force matches is the wrong solution; that just creates incorrect groupings. If pieces aren't matching, the right fix is to add the correct stock profile to the material, or to check whether the model dimensions are what you intended.
 
@@ -116,9 +116,9 @@ Width variation is a separate setting from measurement tolerance, and the distin
 
 **Width variation** covers the case where you intentionally buy stock that is slightly wider than the finished piece, and rip it to width on the table saw. For example: you need pieces that are 148mm wide, but your supplier only stocks 150mm boards. With a width variation of 5mm, CutVisor will match your 148mm pieces to 150mm stock, knowing you'll rip off 2mm.
 
-At the default value of 0mm, this is disabled — a 150mm stock will not be offered for a 148mm piece, and a 200mm stock will not be offered for a 150mm piece regardless of how high you set measurement tolerance. This prevents accidental matches between completely different stock sizes.
+By default, width variation is set to 10mm — a piece up to 10mm narrower than an available stock width is matched automatically, on the assumption you'll rip it down. A 148mm piece will be matched to 150mm stock (2mm to rip off), but a 150mm piece will not be matched to a 200mm stock — 50mm is well outside the default range, which prevents accidental matches between genuinely different stock sizes regardless of how high you set measurement tolerance.
 
-Only raise width variation when you have a specific ripping step in your workflow.
+Set it to 0mm if you never rip to width and want only close, non-ripped matches. Raise it if ripping is a routine step in your workflow and your boards differ more from your target widths than the default covers.
 
 ### Rip-cut warning
 
@@ -142,7 +142,9 @@ The import process handles several problems that arise from how JARCH creates ge
 
 **Open mesh edges.** Cutting a board leaves an open face where the cut was made. CutVisor fills these holes automatically, which is necessary for correct volume calculations and for some downstream tools.
 
-**Dimension measurement on inclined boards.** Horizontal siding boards are not aligned with the world axes — they sit at an angle on the wall. Standard bounding box measurement gives inflated dimensions for rotated objects (a 20mm thick board inclined at 60° would measure as 40mm using axis-aligned bounding box). CutVisor uses Principal Component Analysis (PCA) on the mesh vertices, which finds the three principal axes of the piece regardless of its orientation in the world. This gives correct dimensions — length, width and thickness — whether the board is horizontal, vertical, inclined or fully rotated. PCA works correctly even when transforms have been applied to the mesh, and is unaffected by other modifiers in the stack (Solidify, Bevel, Subdivision).
+**Dimension measurement on inclined boards.** Horizontal siding boards are not aligned with the world axes — they sit at an angle on the wall. Standard bounding box measurement gives inflated dimensions for rotated objects (a 20mm thick board inclined at 60° would measure as 40mm using axis-aligned bounding box). CutVisor instead identifies each axis from face area: the dominant flat faces (front/back of the board) give the thickness direction, and the long side edges — by far the next-largest flat surfaces on a simple board — give the width direction; length is whatever's left over. Because this relies on surface area rather than vertex positions, it stays accurate even on finely tessellated imports, bevelled edges, or boards with a chamfer missing at one end — and it works correctly whether the board is horizontal, vertical, inclined or fully rotated.
+
+This measurement is taken from the base mesh, before modifiers are evaluated — non-destructive modifiers like Solidify, Bevel or Subdivision Surface won't be reflected in the reported dimensions. Apply such a modifier first if you need it included in the measurement.
 
 After import, pieces appear in a dedicated Blender collection named after the original object, ready for material assignment and Part ID generation.
 
@@ -232,7 +234,7 @@ Full licence text: https://www.gnu.org/licenses/gpl-3.0.html
 
 ### Pro Features — Commercial Licence
 
-The Pro features of CutVisor — Shopping List optimizer, advanced overlay, wood species presets, Auto-Assign from Import, and all features unlocked by a `CWTW-…` activation key — are not covered by the GPL.
+The Pro features of CutVisor — CSV import for materials and stock, advanced overlay styling, wood species presets, width variation and rip/cross-cut limits, multi-board splicing, JARCH Vis import, and all features unlocked by a `CWTW-…` activation key — are not covered by the GPL.
 
 By purchasing a Pro key you agree to the following terms:
 
@@ -252,4 +254,4 @@ CutVisor won't make you a better designer. But it will make sure that what you d
 
 That feels like enough.
 
-*CutVisor is developed by an architecture faculty member with an interest in computational design and sustainable timber construction.* *Feedback, feature requests and bug reports are genuinely welcome — this tool grows with its users.*  
+*CutVisor is developed by an architecture faculty member with an interest in computational design and sustainable timber construction.* *Feedback, feature requests and bug reports are genuinely welcome — this tool grows with its users.*
