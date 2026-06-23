@@ -1,4 +1,4 @@
-# **CutVisor — More Than a Plugin** 
+# **CutVisor — More Than a Plugin**
 
 ## Why CutVisor exists
 
@@ -53,6 +53,22 @@ The free Core version is designed exactly for this: unlimited projects, no time 
 You work with wood regularly — furniture, objects, installations. You've developed an instinct for material, but instinct has limits when projects get complex. CutVisor lets you validate your instinct with numbers, quickly. It's not about replacing craft knowledge — it's about giving that knowledge a tool that keeps up with it.
 
 ## Feature explanations — what everything means
+
+### Volume Filter (Parts tab)
+
+Most real imports aren't clean. A model brought in from Rhino, SketchUp or IFC typically lands as one large collection containing not just the timber pieces but every screw, bolt, and bracket modelled along with them — sometimes hundreds of small objects mixed in with the boards you actually want to cut. Sorting these out by hand, one click at a time, doesn't scale.
+
+The Volume Filter gives you a fast way to separate the two by size, since hardware is reliably tiny compared to timber:
+
+**Active object volume** is shown live, with no button to click — select anything in the viewport and its volume reads directly in cm³. Select a screw to see what you're dealing with, select a board to compare.
+
+**Min / Max fields** define a volume range. Next to each is a small eyedropper button: select an object, click the eyedropper, and that object's volume is copied straight into the field — no need to type a number you'd otherwise have to read off the active-object display first.
+
+**Select in Range** selects every eligible object in the scene whose volume falls inside Min–Max. **Exclude in Range** does the opposite on your *current* selection: select everything broadly first, then Exclude in Range to drop out whatever falls in that band — typically the hardware — leaving the timber pieces selected and ready for **Generate Part IDs**, which only ever acts on the current selection.
+
+**Select Same Volume** goes one step further: select one screw, click the button, and every object with a closely matching volume is selected at once — useful when a project uses several different fastener sizes and you want to isolate just one type. The **Tolerance** field (1% by default) controls how close a match needs to be; raise it if your hardware has small modelling variations, lower it if you need an exact match.
+
+None of this requires a material to be assigned first — volume is read directly from the mesh geometry, so filtering can happen as the very first step after import, before any material or Part ID workflow begins.
 
 ### Materials and pricing
 
