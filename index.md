@@ -237,7 +237,7 @@ The free Core version is designed exactly for this: unlimited projects, no time 
 
 You work with wood regularly — furniture, objects, installations. You've developed an instinct for material, but instinct has limits when projects get complex. CutVisor lets you validate your instinct with numbers, quickly. It's not about replacing craft knowledge — it's about giving that knowledge a tool that keeps up with it.
 
-## <a id="help-finish-en"></a>Feature explanations — what everything means
+## Feature explanations — what everything means
 
 ### <a id="help-parts-en"></a>Volume Filter (Parts tab)
 
@@ -395,6 +395,68 @@ If you work with **Geometry Nodes** to create arrays, CutVisor detects the modif
 
 Both files are saved as UTF-8 text with a leading byte-order mark, which means they open correctly in Excel on all operating systems without character encoding problems.
 
+### Cut sheets (SVG and DXF)
+
+After generating a shopping list, **Export Cut Sheets** (Planning tab, next to Export CSV) writes a printable diagram of every board. Each board is drawn to scale as a bar, with its pieces placed in cutting order from left to right and separated by the kerf. Every piece shows its Part ID (or object name) and length, the cuts are numbered 1, 2, 3… per board, and the leftover is hatched with its length. Rip-to-width and splice warnings appear directly on the drawing.
+
+A DXF R12 file with the same content is written next to the SVG, for CNC and panel saws that import cut lists. Both files go into the export folder, and nothing is generated until you click the button.
+
+### Identify mode
+
+In the Planning report, every board can be expanded (▶) to list its pieces. Click a piece — or a row in the Unmatched section — and CutVisor selects that object in the viewport and shows one small label on it (Part ID · length). Shift-click adds to the selection. The label disappears by itself as soon as the object is deselected or hidden, so the viewport never fills up with text.
+
+### Hardware list (manual)
+
+Below the cut optimizer, the **Hardware (manual)** box keeps a simple list of what you will buy besides timber — screws, bolts, hinges, brackets: item, specification, quantity, unit price and currency. Totals per currency are shown live, and the list is added as a HARDWARE section to the Shopping List CSV and to the Consolidated BOM. There is no automatic detection and no structural check: you type in what you intend to buy.
+
+### Help and quick settings
+
+Two small buttons sit on the right of the CutVisor panel header. **?** opens this guide in the interface language (English, French, Spanish or Portuguese; the other languages open the English version) at the section for the tab you are in. The **gear** opens quick settings: installed version, language, scene units, default currency, licence status, a shortcut to the full Settings tab and a link to this guide.
+
+## <a id="help-finish-en"></a>Finishes — paint, primer and treatments
+
+A timber structure is rarely finished when it is cut. It gets a biocide against insects and fungi, sometimes a fire retardant, a primer, and paint, stain or varnish — and every one of these is bought in cans, with a consumption that depends on the wood. The **Finishes** tab turns the 3D model into those quantities.
+
+The area to finish is available in Core. Everything else in this chapter is a Pro feature.
+
+### Area to finish (Core)
+
+In the Finishes tab, and in the Finishes box of the Planning tab, **Calculate area (selection)** gives the surface of the selected pieces in m², with the end grain shown separately. Array and Mirror instances are counted. With this number and the product datasheet you can work out the paint yourself.
+
+### Products
+
+A product is one can on the shelf: its role (biocide, fire retardant, combined biocide + fire retardant, primer, paint or varnish), its type (penetrating or film-forming), its consumption per coat from the datasheet (m²/L, L/m², g/m², or kg/m³ for dipping and vacuum-pressure impregnation), its density, the default number of coats, and the package sizes the shop sells, with their prices.
+
+Eight generic templates — primer, biocide, fire retardant, combined product, stain, acrylic paint, varnish and oil — are included to start from. Their values are indicative and are marked as such until you replace them with the real datasheet. For fire retardants, the quantity needed for a given fire class always comes from the product's certified datasheet: CutVisor only does the arithmetic.
+
+### Finish systems
+
+A finish system is the recipe applied to a group of pieces: an ordered stack of steps. A new system has four slots in the usual order — biocide, fire retardant, primer, paint — and a slot left empty means "none". Each step has its product, its number of coats, the application method (brush, roller, spray gun, dipping) and the matching loss, which you can edit.
+
+Each CutVisor material can have a default system. Selected objects can override it, or be left out with **No finish**. Products and systems can be saved to a library shared between projects, and exported or imported as a JSON file to move them to another computer.
+
+### Wood: species and surface
+
+Two things decide how much the first coat soaks in.
+
+**Species.** Choosing a species preset sets two coefficients: one for penetrating products, based on the EN 350 treatability class (spruce and larch take little, beech and pine sapwood take a lot), and one for film-forming products, based on how open the surface is (oak and ash have open pores). Fir and Douglas fir are now among the presets. The coefficients are indicative and can be edited per material.
+
+**Surface.** Rough, planed or sanded — set per material (rough and planed timber are usually separate materials anyway, with different prices) or per object. Rough-sawn wood takes considerably more on the first coat.
+
+### How quantities are calculated
+
+For every piece, CutVisor measures the side faces and the end grain separately. The first coat on bare wood is multiplied by the species and surface factors, and the end grain by an extra factor (2 by default). A film-forming step — typically the primer — seals the surface, so every coat after it is calculated on a sealed surface: this is how a primer lowers the consumption of the paint on top of it. The application loss is added at the end, and each product's total is rounded up to the cheapest combination of the package sizes you entered.
+
+### Maintenance mode — exposed faces only
+
+When the structure is already built, the faces that touch other parts — joints, contacts, boards resting on joists — cannot be painted. Switch a finish system to **Maintenance** and only the exposed faces are counted. A face is treated as hidden where another part faces it within the contact gap (3 mm by default), or where it lies inside another part, as with a modelled tenon. Array instances that touch each other are recognised too.
+
+In maintenance, a surface condition replaces the primer logic: bare wood; coated, in good condition (the old coating still closes the wood); or weathered — grey and UV-damaged — which soaks up more. **Show hidden faces** marks the excluded areas with red points in the viewport, only while the option is on.
+
+### In the shopping list
+
+Tick **Include in shopping list** and a FINISHES section — quantities per system and step, packages to buy, costs — is added to the Shopping List CSV and to the Consolidated BOM, and the Detailed BOM gets three more columns (system, surface, area). The finishes are recalculated every time you generate the shopping list.
+
 ## A note on what CutVisor doesn't do (yet)
 
 **Sheet goods.** Plywood, OSB, MDF, particle board, CLT panels — optimizing these requires 2D nesting (fitting rectangles into a panel), which is a different and more complex problem than linear cutting. It's on the roadmap.
@@ -403,7 +465,7 @@ Both files are saved as UTF-8 text with a leading byte-order mark, which means t
 
 **Structural calculations.** CutVisor tells you what material to buy, not whether it will stand up. Structural verification follows its own process and standards (EC5 for timber in Europe). The two are complementary, not competitive.
 
-**Connection hardware.** Bolts, screws, brackets, joist hangers — not in scope for this version.
+**Automatic connection hardware.** Bolts, screws, brackets and joist hangers can be listed by hand (see Hardware list), but CutVisor does not yet detect connections or size the fasteners.
 
 These are not afterthoughts. They define the boundary of what CutVisor promises to do well, which is the one thing it actually does: tell you what timber to buy and how to cut it.
 
@@ -436,7 +498,7 @@ Full licence text: https://www.gnu.org/licenses/gpl-3.0.html
 
 ### Pro Features — Commercial Licence
 
-The Pro features of CutVisor — CSV import for materials and stock, advanced overlay styling, wood species presets, saved custom material presets, width variation and rip/cross-cut limits, multi-board splicing, JARCH Vis import, and all features unlocked by a `CWTW-…` activation key — are not covered by the GPL.
+The Pro features of CutVisor — CSV import for materials and stock, advanced overlay styling, wood species presets, saved custom material presets, width variation and rip/cross-cut limits, multi-board splicing, JARCH Vis import, the Finishes module (products, finish systems, quantities and maintenance mode), and all features unlocked by a `CWTW-…` activation key — are not covered by the GPL.
 
 By purchasing a Pro key you agree to the following terms:
 
@@ -517,7 +579,7 @@ La version Core gratuite est conçue exactement pour cela : projets illimités, 
 
 Vous travaillez régulièrement le bois — meubles, objets, installations. Vous avez développé un instinct pour la matière, mais l'instinct a ses limites quand les projets se complexifient. CutVisor vous permet de valider votre instinct avec des chiffres, rapidement. Il ne s'agit pas de remplacer le savoir-faire artisanal — il s'agit de donner à ce savoir-faire un outil qui le suit.
 
-## <a id="help-finish-fr"></a>Explication des fonctionnalités — ce que tout signifie
+## Explication des fonctionnalités — ce que tout signifie
 
 ### <a id="help-parts-fr"></a>Filtre de volume (onglet Parts)
 
@@ -675,6 +737,68 @@ Si vous utilisez les **Geometry Nodes** pour créer des réseaux, CutVisor déte
 
 Les deux fichiers sont enregistrés en texte UTF-8 avec une marque d'ordre des octets (BOM) en en-tête, ce qui leur permet de s'ouvrir correctement dans Excel sur tous les systèmes d'exploitation sans problème d'encodage de caractères.
 
+### Plans de coupe (SVG et DXF)
+
+Après avoir généré une liste d'achats, **Exporter les plans de coupe** (onglet Planification, à côté d'Exporter CSV) produit un schéma imprimable de chaque planche. Chaque planche est dessinée à l'échelle sous forme de barre, avec ses pièces placées dans l'ordre de coupe, de gauche à droite, séparées par le trait de scie. Chaque pièce affiche son ID de pièce (ou le nom de l'objet) et sa longueur, les coupes sont numérotées 1, 2, 3… par planche, et la chute est hachurée avec sa longueur. Les avertissements de refente et de jonction apparaissent directement sur le dessin.
+
+Un fichier DXF R12 au même contenu est écrit à côté du SVG, pour les machines CNC et les scies à panneaux qui importent des listes de coupe. Les deux fichiers vont dans le dossier d'export, et rien n'est généré tant que vous ne cliquez pas sur le bouton.
+
+### Mode identification
+
+Dans le rapport de planification, chaque planche peut être dépliée (▶) pour lister ses pièces. Cliquez sur une pièce — ou sur une ligne de la section des pièces non associées — et CutVisor sélectionne l'objet dans la vue 3D et y affiche une seule petite étiquette (ID de pièce · longueur). Maj-clic ajoute à la sélection. L'étiquette disparaît d'elle-même dès que l'objet est désélectionné ou masqué, la vue 3D ne se remplit donc jamais de texte.
+
+### Liste de quincaillerie (manuelle)
+
+Sous l'optimiseur de coupe, le cadre **Quincaillerie (manuelle)** tient une liste simple de ce que vous achèterez en plus du bois — vis, boulons, charnières, équerres : article, spécification, quantité, prix unitaire et devise. Les totaux par devise s'affichent en direct, et la liste est ajoutée comme section HARDWARE au CSV de la liste d'achats et au BOM consolidé. Il n'y a ni détection automatique ni vérification structurelle : vous saisissez ce que vous comptez acheter.
+
+### Aide et réglages rapides
+
+Deux petits boutons se trouvent à droite de l'en-tête du panneau CutVisor. **?** ouvre ce guide dans la langue de l'interface (anglais, français, espagnol ou portugais ; les autres langues ouvrent la version anglaise), à la section de l'onglet où vous vous trouvez. La **roue dentée** ouvre les réglages rapides : version installée, langue, unités de la scène, devise par défaut, état de la licence, un raccourci vers l'onglet Paramètres complet et un lien vers ce guide.
+
+## <a id="help-finish-fr"></a>Finitions — peinture, primaire et traitements
+
+Une structure en bois est rarement terminée une fois coupée. Elle reçoit un biocide contre les insectes et les champignons, parfois un ignifuge, un primaire, puis une peinture, une lasure ou un vernis — et chacun de ces produits s'achète en pots, avec une consommation qui dépend du bois. L'onglet **Finitions** transforme le modèle 3D en ces quantités.
+
+La surface à traiter est disponible en Core. Tout le reste de ce chapitre est une fonctionnalité Pro.
+
+### Surface à traiter (Core)
+
+Dans l'onglet Finitions, et dans le cadre Finitions de l'onglet Planification, **Calculer la surface (sélection)** donne la surface des pièces sélectionnées en m², avec le bois de bout indiqué séparément. Les instances Array et Mirror sont comptées. Avec ce chiffre et la fiche technique du produit, vous pouvez calculer la peinture vous-même.
+
+### Produits
+
+Un produit, c'est un pot sur l'étagère : son rôle (biocide, ignifuge, biocide + ignifuge combiné, primaire, peinture ou vernis), son type (pénétrant ou filmogène), sa consommation par couche selon la fiche technique (m²/L, L/m², g/m², ou kg/m³ pour le trempage et l'imprégnation en autoclave), sa densité, le nombre de couches par défaut et les conditionnements vendus en magasin, avec leurs prix.
+
+Huit modèles génériques — primaire, biocide, ignifuge, produit combiné, lasure, peinture acrylique, vernis et huile — sont fournis comme point de départ. Leurs valeurs sont indicatives et signalées comme telles jusqu'à ce que vous les remplaciez par la vraie fiche technique. Pour les ignifuges, la quantité nécessaire pour une classe de feu donnée vient toujours de la fiche technique certifiée du produit : CutVisor ne fait que le calcul.
+
+### Systèmes de finition
+
+Un système de finition est la recette appliquée à un groupe de pièces : une pile ordonnée d'étapes. Un nouveau système a quatre emplacements dans l'ordre habituel — biocide, ignifuge, primaire, peinture — et un emplacement laissé vide signifie « aucun ». Chaque étape a son produit, son nombre de couches, sa méthode d'application (pinceau, rouleau, pistolet, trempage) et la perte correspondante, modifiable.
+
+Chaque matériau CutVisor peut avoir un système par défaut. Les objets sélectionnés peuvent le remplacer ou être exclus avec **Sans finition**. Produits et systèmes peuvent être enregistrés dans une bibliothèque partagée entre projets, et exportés ou importés en JSON pour les transférer sur un autre ordinateur.
+
+### Le bois : essence et surface
+
+Deux éléments décident de la quantité absorbée par la première couche.
+
+**L'essence.** Choisir un préréglage d'essence fixe deux coefficients : l'un pour les produits pénétrants, basé sur la classe d'imprégnabilité EN 350 (l'épicéa et le mélèze absorbent peu, le hêtre et l'aubier de pin beaucoup), l'autre pour les produits filmogènes, basé sur l'ouverture de la surface (le chêne et le frêne ont des pores ouverts). Le sapin et le douglas font désormais partie des préréglages. Les coefficients sont indicatifs et modifiables par matériau.
+
+**La surface.** Brut, raboté ou poncé — défini par matériau (le bois brut et le bois raboté sont de toute façon souvent deux matériaux distincts, à des prix différents) ou par objet. Le bois brut de sciage absorbe nettement plus à la première couche.
+
+### Comment les quantités sont calculées
+
+Pour chaque pièce, CutVisor mesure séparément les faces latérales et le bois de bout. La première couche sur bois nu est multipliée par les facteurs d'essence et de surface, et le bois de bout par un facteur supplémentaire (2 par défaut). Une étape filmogène — typiquement le primaire — ferme la surface, si bien que toutes les couches suivantes sont calculées sur une surface fermée : c'est ainsi qu'un primaire réduit la consommation de la peinture appliquée par-dessus. La perte d'application est ajoutée à la fin, et le total de chaque produit est arrondi à la combinaison de conditionnements la moins chère.
+
+### Mode entretien — faces exposées uniquement
+
+Quand la structure est déjà construite, les faces qui touchent d'autres pièces — assemblages, contacts, planches posées sur les solives — ne peuvent pas être peintes. Passez un système de finition en **Entretien** et seules les faces exposées sont comptées. Une face est considérée comme cachée là où une autre pièce lui fait face à moins du jeu de contact (3 mm par défaut), ou là où elle se trouve à l'intérieur d'une autre pièce, comme un tenon modélisé. Les instances Array qui se touchent sont reconnues aussi.
+
+En entretien, un état de surface remplace la logique du primaire : bois nu ; déjà traité, en bon état (l'ancienne finition ferme encore le bois) ; ou dégradé — gris, abîmé par les UV — qui absorbe davantage. **Afficher les faces cachées** marque les zones exclues par des points rouges dans la vue 3D, uniquement tant que l'option est active.
+
+### Dans la liste d'achats
+
+Cochez **Inclure dans la liste d'achats** : une section FINISHES — quantités par système et par étape, conditionnements à acheter, coûts — est ajoutée au CSV de la liste d'achats et au BOM consolidé, et le BOM détaillé reçoit trois colonnes de plus (système, surface, aire). Les finitions sont recalculées à chaque génération de la liste d'achats.
+
 ## Ce que CutVisor ne fait pas (encore)
 
 **Panneaux.** Contreplaqué, OSB, MDF, panneaux de particules, panneaux CLT — leur optimisation nécessite une imbrication 2D (placer des rectangles dans un panneau), un problème différent et plus complexe que la découpe linéaire. C'est sur la feuille de route.
@@ -683,7 +807,7 @@ Les deux fichiers sont enregistrés en texte UTF-8 avec une marque d'ordre des o
 
 **Calculs structurels.** CutVisor vous dit quelle matière acheter, pas si elle tiendra debout. La vérification structurelle suit son propre processus et ses propres normes (EC5 pour le bois en Europe). Les deux sont complémentaires, pas concurrents.
 
-**Quincaillerie d'assemblage.** Boulons, vis, équerres, sabots de charpente — hors périmètre de cette version.
+**Quincaillerie d'assemblage automatique.** Boulons, vis, équerres et sabots de charpente peuvent être listés à la main (voir Liste de quincaillerie), mais CutVisor ne détecte pas encore les assemblages et ne dimensionne pas les fixations.
 
 Ce ne sont pas des oublis. Ils définissent les limites de ce que CutVisor promet de bien faire, qui est la seule chose qu'il fait réellement : vous dire quel bois acheter et comment le couper.
 
@@ -716,7 +840,7 @@ Texte complet de la licence : https://www.gnu.org/licenses/gpl-3.0.html
 
 ### Fonctionnalités Pro — Licence commerciale
 
-Les fonctionnalités Pro de CutVisor — import CSV pour matériaux et stock, style d'affichage avancé, préréglages d'essences de bois, préréglages de matériaux personnalisés enregistrés, variation de largeur et limites de refente/tronçonnage, jonction de planches multiples, import JARCH Vis, et toutes les fonctionnalités débloquées par une clé d'activation `CWTW-…` — ne sont pas couvertes par la GPL.
+Les fonctionnalités Pro de CutVisor — import CSV pour matériaux et stock, style d'affichage avancé, préréglages d'essences de bois, préréglages de matériaux personnalisés enregistrés, variation de largeur et limites de refente/tronçonnage, jonction de planches multiples, import JARCH Vis, le module Finitions (produits, systèmes de finition, quantités et mode entretien), et toutes les fonctionnalités débloquées par une clé d'activation `CWTW-…` — ne sont pas couvertes par la GPL.
 
 En achetant une clé Pro, vous acceptez les conditions suivantes :
 
@@ -797,7 +921,7 @@ La versión Core gratuita está pensada exactamente para esto: proyectos ilimita
 
 Trabajas la madera con regularidad — muebles, objetos, instalaciones. Has desarrollado un instinto para el material, pero el instinto tiene límites cuando los proyectos se complican. CutVisor te permite validar tu instinto con números, rápidamente. No se trata de sustituir el conocimiento artesanal — se trata de darle a ese conocimiento una herramienta que lo acompañe.
 
-## <a id="help-finish-es"></a>Explicación de funciones — qué significa cada cosa
+## Explicación de funciones — qué significa cada cosa
 
 ### <a id="help-parts-es"></a>Filtro de volumen (pestaña Parts)
 
@@ -955,6 +1079,68 @@ Si trabajas con **Geometry Nodes** para crear arrays, CutVisor detecta el modifi
 
 Ambos archivos se guardan como texto UTF-8 con una marca de orden de bytes (BOM) al inicio, lo que permite que se abran correctamente en Excel en todos los sistemas operativos sin problemas de codificación de caracteres.
 
+### Planos de corte (SVG y DXF)
+
+Después de generar una lista de compras, **Exportar planos de corte** (pestaña Planificación, junto a Exportar CSV) crea un esquema imprimible de cada tablón. Cada tablón se dibuja a escala como una barra, con sus piezas colocadas en orden de corte de izquierda a derecha y separadas por el ancho de la sierra. Cada pieza muestra su ID de pieza (o el nombre del objeto) y su longitud, los cortes se numeran 1, 2, 3… por tablón y el sobrante aparece rayado con su longitud. Los avisos de corte al hilo y de empalme aparecen directamente en el dibujo.
+
+Junto al SVG se escribe un archivo DXF R12 con el mismo contenido, para máquinas CNC y seccionadoras que importan listas de corte. Ambos archivos van a la carpeta de exportación y no se genera nada hasta que pulsas el botón.
+
+### Modo identificación
+
+En el informe de Planificación, cada tablón puede desplegarse (▶) para listar sus piezas. Haz clic en una pieza — o en una fila de la sección de piezas sin correspondencia — y CutVisor selecciona ese objeto en el visor y muestra sobre él una sola etiqueta pequeña (ID de pieza · longitud). Mayús-clic añade a la selección. La etiqueta desaparece sola en cuanto el objeto se deselecciona u oculta, así que el visor nunca se llena de texto.
+
+### Lista de herrajes (manual)
+
+Debajo del optimizador de corte, el recuadro **Herrajes (manual)** guarda una lista sencilla de lo que comprarás además de la madera — tornillos, pernos, bisagras, escuadras: artículo, especificación, cantidad, precio unitario y moneda. Los totales por moneda se muestran en directo, y la lista se añade como sección HARDWARE al CSV de la lista de compras y al BOM consolidado. No hay detección automática ni comprobación estructural: escribes lo que piensas comprar.
+
+### Ayuda y ajustes rápidos
+
+A la derecha de la cabecera del panel CutVisor hay dos botones pequeños. **?** abre esta guía en el idioma de la interfaz (inglés, francés, español o portugués; los demás idiomas abren la versión inglesa), en la sección de la pestaña en la que estás. La **rueda dentada** abre los ajustes rápidos: versión instalada, idioma, unidades de la escena, moneda por defecto, estado de la licencia, un acceso a la pestaña Configuración completa y un enlace a esta guía.
+
+## <a id="help-finish-es"></a>Acabados — pintura, imprimación y tratamientos
+
+Una estructura de madera rara vez está terminada cuando se corta. Recibe un biocida contra insectos y hongos, a veces un ignífugo, una imprimación y una pintura, lasur o barniz — y cada uno de estos productos se compra en botes, con un consumo que depende de la madera. La pestaña **Acabados** convierte el modelo 3D en esas cantidades.
+
+La superficie a tratar está disponible en Core. Todo lo demás de este capítulo es una función Pro.
+
+### Superficie a tratar (Core)
+
+En la pestaña Acabados, y en el recuadro Acabados de la pestaña Planificación, **Calcular superficie (selección)** da la superficie de las piezas seleccionadas en m², con las testas indicadas por separado. Se cuentan las instancias de Array y Mirror. Con esta cifra y la ficha técnica del producto puedes calcular la pintura tú mismo.
+
+### Productos
+
+Un producto es un bote en la estantería: su función (biocida, ignífugo, biocida + ignífugo combinado, imprimación, pintura o barniz), su tipo (penetrante o formador de película), su consumo por capa según la ficha técnica (m²/L, L/m², g/m², o kg/m³ para inmersión e impregnación en autoclave), su densidad, el número de capas por defecto y los envases que vende la tienda, con sus precios.
+
+Se incluyen ocho plantillas genéricas — imprimación, biocida, ignífugo, producto combinado, lasur, pintura acrílica, barniz y aceite — como punto de partida. Sus valores son orientativos y se marcan como tales hasta que los sustituyas por la ficha técnica real. En los ignífugos, la cantidad necesaria para una clase de reacción al fuego siempre viene de la ficha técnica certificada del producto: CutVisor solo hace el cálculo.
+
+### Sistemas de acabado
+
+Un sistema de acabado es la receta aplicada a un grupo de piezas: una pila ordenada de pasos. Un sistema nuevo tiene cuatro huecos en el orden habitual — biocida, ignífugo, imprimación, pintura — y un hueco vacío significa «ninguno». Cada paso tiene su producto, su número de capas, el método de aplicación (brocha, rodillo, pistola, inmersión) y la pérdida correspondiente, editable.
+
+Cada material de CutVisor puede tener un sistema por defecto. Los objetos seleccionados pueden sustituirlo o quedar fuera con **Sin acabado**. Productos y sistemas pueden guardarse en una biblioteca compartida entre proyectos, y exportarse o importarse como JSON para llevarlos a otro ordenador.
+
+### La madera: especie y superficie
+
+Dos cosas deciden cuánto absorbe la primera capa.
+
+**La especie.** Elegir un preajuste de especie fija dos coeficientes: uno para los productos penetrantes, basado en la clase de impregnabilidad EN 350 (el abeto rojo y el alerce absorben poco, el haya y la albura de pino mucho), y otro para los productos formadores de película, basado en lo abierta que es la superficie (el roble y el fresno tienen poros abiertos). El abeto blanco y el pino de Oregón ya están entre los preajustes. Los coeficientes son orientativos y pueden editarse por material.
+
+**La superficie.** En bruto, cepillada o lijada — por material (la madera en bruto y la cepillada suelen ser materiales distintos, con precios distintos) o por objeto. La madera aserrada en bruto absorbe bastante más en la primera capa.
+
+### Cómo se calculan las cantidades
+
+Para cada pieza, CutVisor mide por separado las caras laterales y las testas. La primera capa sobre madera desnuda se multiplica por los factores de especie y superficie, y las testas por un factor adicional (2 por defecto). Un paso formador de película — normalmente la imprimación — sella la superficie, así que todas las capas siguientes se calculan sobre una superficie sellada: así es como una imprimación reduce el consumo de la pintura que va encima. La pérdida de aplicación se añade al final, y el total de cada producto se redondea a la combinación de envases más barata.
+
+### Modo mantenimiento — solo caras expuestas
+
+Cuando la estructura ya está construida, las caras que tocan otras piezas — uniones, contactos, tablas apoyadas sobre viguetas — no se pueden pintar. Pasa un sistema de acabado a **Mantenimiento** y solo se cuentan las caras expuestas. Una cara se considera oculta donde otra pieza la enfrenta a menos de la holgura de contacto (3 mm por defecto), o donde queda dentro de otra pieza, como una espiga modelada. También se reconocen las instancias de Array que se tocan entre sí.
+
+En mantenimiento, un estado de superficie sustituye a la lógica de la imprimación: madera desnuda; pintada, en buen estado (el acabado antiguo aún cierra la madera); o degradada — gris, dañada por los UV — que absorbe más. **Mostrar caras ocultas** marca las zonas excluidas con puntos rojos en el visor, solo mientras la opción está activa.
+
+### En la lista de compras
+
+Marca **Incluir en la lista de compras** y se añade una sección FINISHES — cantidades por sistema y paso, envases que comprar, costes — al CSV de la lista de compras y al BOM consolidado, y el BOM detallado recibe tres columnas más (sistema, superficie, área). Los acabados se recalculan cada vez que generas la lista de compras.
+
 ## Lo que CutVisor no hace (todavía)
 
 **Tableros.** Contrachapado, OSB, MDF, aglomerado, paneles CLT — optimizarlos requiere anidado 2D (encajar rectángulos en un panel), un problema distinto y más complejo que el corte lineal. Está en la hoja de ruta.
@@ -963,7 +1149,7 @@ Ambos archivos se guardan como texto UTF-8 con una marca de orden de bytes (BOM)
 
 **Cálculos estructurales.** CutVisor te dice qué material comprar, no si va a aguantar. La verificación estructural sigue su propio proceso y sus propias normas (EC5 para madera en Europa). Ambos son complementarios, no competidores.
 
-**Herrajes de conexión.** Pernos, tornillos, escuadras, estribos — fuera del alcance de esta versión.
+**Herrajes de conexión automáticos.** Pernos, tornillos, escuadras y estribos pueden listarse a mano (ver Lista de herrajes), pero CutVisor aún no detecta las uniones ni dimensiona los elementos de fijación.
 
 Estas no son omisiones casuales. Definen el límite de lo que CutVisor promete hacer bien, que es la única cosa que realmente hace: decirte qué madera comprar y cómo cortarla.
 
@@ -996,7 +1182,7 @@ Texto completo de la licencia: https://www.gnu.org/licenses/gpl-3.0.html
 
 ### Funciones Pro — Licencia comercial
 
-Las funciones Pro de CutVisor — importación CSV para materiales y stock, estilo de superposición avanzado, preajustes de especies de madera, preajustes de materiales personalizados guardados, variación de ancho y límites de recorte/corte transversal, empalme de varios tablones, importación JARCH Vis, y todas las funciones desbloqueadas por una clave de activación `CWTW-…` — no están cubiertas por la GPL.
+Las funciones Pro de CutVisor — importación CSV para materiales y stock, estilo de superposición avanzado, preajustes de especies de madera, preajustes de materiales personalizados guardados, variación de ancho y límites de recorte/corte transversal, empalme de varios tablones, importación JARCH Vis, el módulo Acabados (productos, sistemas de acabado, cantidades y modo mantenimiento), y todas las funciones desbloqueadas por una clave de activación `CWTW-…` — no están cubiertas por la GPL.
 
 Al comprar una clave Pro aceptas los siguientes términos:
 
@@ -1077,7 +1263,7 @@ A versão Core gratuita foi pensada exatamente para isso: projetos ilimitados, s
 
 Você trabalha com madeira regularmente — móveis, objetos, instalações. Desenvolveu um instinto para o material, mas o instinto tem limites quando os projetos ficam complexos. O CutVisor permite validar seu instinto com números, rapidamente. Não se trata de substituir o conhecimento artesanal — se trata de dar a esse conhecimento uma ferramenta que o acompanhe.
 
-## <a id="help-finish-pt"></a>Explicação das funções — o que cada coisa significa
+## Explicação das funções — o que cada coisa significa
 
 ### <a id="help-parts-pt"></a>Filtro de volume (aba Parts)
 
@@ -1235,6 +1421,68 @@ Se você trabalha com **Geometry Nodes** para criar arrays, o CutVisor detecta o
 
 Ambos os arquivos são salvos como texto UTF-8 com uma marca de ordem de bytes (BOM) no início, o que faz com que abram corretamente no Excel em todos os sistemas operacionais sem problemas de codificação de caracteres.
 
+### Planos de corte (SVG e DXF)
+
+Depois de gerar uma lista de compras, **Exportar planos de corte** (aba Planejamento, ao lado de Exportar CSV) cria um diagrama imprimível de cada tábua. Cada tábua é desenhada em escala como uma barra, com as peças colocadas na ordem de corte, da esquerda para a direita, separadas pela espessura da serra. Cada peça mostra seu ID de peça (ou o nome do objeto) e o comprimento, os cortes são numerados 1, 2, 3… por tábua e a sobra aparece hachurada com seu comprimento. Os avisos de corte longitudinal e de emenda aparecem diretamente no desenho.
+
+Ao lado do SVG é gravado um arquivo DXF R12 com o mesmo conteúdo, para máquinas CNC e seccionadoras que importam listas de corte. Os dois arquivos vão para a pasta de exportação, e nada é gerado até você clicar no botão.
+
+### Modo identificação
+
+No relatório de Planejamento, cada tábua pode ser expandida (▶) para listar suas peças. Clique em uma peça — ou em uma linha da seção de peças sem correspondência — e o CutVisor seleciona esse objeto na viewport e mostra sobre ele um único rótulo pequeno (ID de peça · comprimento). Shift-clique adiciona à seleção. O rótulo desaparece sozinho assim que o objeto é desmarcado ou ocultado, então a viewport nunca se enche de texto.
+
+### Lista de ferragens (manual)
+
+Abaixo do otimizador de corte, o quadro **Ferragens (manual)** mantém uma lista simples do que você vai comprar além da madeira — parafusos, pinos, dobradiças, cantoneiras: item, especificação, quantidade, preço unitário e moeda. Os totais por moeda aparecem em tempo real, e a lista é adicionada como seção HARDWARE ao CSV da lista de compras e ao BOM consolidado. Não há detecção automática nem verificação estrutural: você digita o que pretende comprar.
+
+### Ajuda e configurações rápidas
+
+Há dois botões pequenos à direita do cabeçalho do painel CutVisor. **?** abre este guia no idioma da interface (inglês, francês, espanhol ou português; os demais idiomas abrem a versão em inglês), na seção da aba em que você está. A **engrenagem** abre as configurações rápidas: versão instalada, idioma, unidades da cena, moeda padrão, status da licença, um atalho para a aba Configurações completa e um link para este guia.
+
+## <a id="help-finish-pt"></a>Acabamentos — tinta, primer e tratamentos
+
+Uma estrutura de madeira raramente está pronta quando é cortada. Ela recebe um biocida contra insetos e fungos, às vezes um retardante de fogo, um primer e tinta, stain ou verniz — e cada um desses produtos é comprado em latas, com um consumo que depende da madeira. A aba **Acabamentos** transforma o modelo 3D nessas quantidades.
+
+A área a tratar está disponível no Core. Todo o resto deste capítulo é um recurso Pro.
+
+### Área a tratar (Core)
+
+Na aba Acabamentos, e no quadro Acabamentos da aba Planejamento, **Calcular área (seleção)** dá a superfície das peças selecionadas em m², com os topos mostrados à parte. As instâncias de Array e Mirror são contadas. Com esse número e a ficha técnica do produto, você mesmo pode calcular a tinta.
+
+### Produtos
+
+Um produto é uma lata na prateleira: sua função (biocida, retardante de fogo, biocida + retardante combinado, primer, tinta ou verniz), seu tipo (penetrante ou formador de película), seu consumo por demão segundo a ficha técnica (m²/L, L/m², g/m², ou kg/m³ para imersão e impregnação em autoclave), sua densidade, o número padrão de demãos e as embalagens vendidas na loja, com seus preços.
+
+Oito modelos genéricos — primer, biocida, retardante de fogo, produto combinado, stain, tinta acrílica, verniz e óleo — vêm incluídos como ponto de partida. Os valores são indicativos e ficam marcados como tal até você substituí-los pela ficha técnica real. Nos retardantes de fogo, a quantidade necessária para uma classe de reação ao fogo sempre vem da ficha técnica certificada do produto: o CutVisor só faz a conta.
+
+### Sistemas de acabamento
+
+Um sistema de acabamento é a receita aplicada a um grupo de peças: uma pilha ordenada de etapas. Um sistema novo tem quatro espaços na ordem habitual — biocida, retardante de fogo, primer, tinta — e um espaço vazio significa «nenhum». Cada etapa tem seu produto, o número de demãos, o método de aplicação (pincel, rolo, pistola, imersão) e a perda correspondente, que pode ser editada.
+
+Cada material do CutVisor pode ter um sistema padrão. Os objetos selecionados podem substituí-lo ou ficar de fora com **Sem acabamento**. Produtos e sistemas podem ser salvos em uma biblioteca compartilhada entre projetos, e exportados ou importados como JSON para levá-los a outro computador.
+
+### A madeira: espécie e superfície
+
+Duas coisas decidem quanto a primeira demão absorve.
+
+**A espécie.** Escolher uma predefinição de espécie define dois coeficientes: um para produtos penetrantes, baseado na classe de impregnabilidade EN 350 (o espruce e o lariço absorvem pouco, a faia e o alburno de pinho muito), e outro para produtos formadores de película, baseado em quão aberta é a superfície (o carvalho e o freixo têm poros abertos). O abeto e o pinho-do-oregon agora estão entre as predefinições. Os coeficientes são indicativos e podem ser editados por material.
+
+**A superfície.** Bruta, aplainada ou lixada — por material (madeira bruta e aplainada costumam ser materiais diferentes, com preços diferentes) ou por objeto. A madeira bruta de serraria absorve bem mais na primeira demão.
+
+### Como as quantidades são calculadas
+
+Para cada peça, o CutVisor mede separadamente as faces laterais e os topos. A primeira demão sobre madeira nua é multiplicada pelos fatores de espécie e de superfície, e os topos por um fator adicional (2 por padrão). Uma etapa formadora de película — normalmente o primer — sela a superfície, então todas as demãos seguintes são calculadas sobre uma superfície selada: é assim que um primer reduz o consumo da tinta aplicada por cima. A perda de aplicação é somada no final, e o total de cada produto é arredondado para a combinação de embalagens mais barata.
+
+### Modo manutenção — só faces expostas
+
+Quando a estrutura já está construída, as faces que tocam outras peças — encaixes, contatos, tábuas apoiadas em vigas — não podem ser pintadas. Mude um sistema de acabamento para **Manutenção** e só as faces expostas são contadas. Uma face é considerada oculta onde outra peça está de frente para ela a menos da folga de contato (3 mm por padrão), ou onde fica dentro de outra peça, como uma espiga modelada. Instâncias de Array que se tocam também são reconhecidas.
+
+Na manutenção, um estado da superfície substitui a lógica do primer: madeira nua; pintada, em bom estado (o acabamento antigo ainda fecha a madeira); ou degradada — cinza, danificada pelos raios UV — que absorve mais. **Mostrar faces ocultas** marca as áreas excluídas com pontos vermelhos na viewport, só enquanto a opção estiver ligada.
+
+### Na lista de compras
+
+Marque **Incluir na lista de compras** e uma seção FINISHES — quantidades por sistema e etapa, embalagens a comprar, custos — é adicionada ao CSV da lista de compras e ao BOM consolidado, e o BOM detalhado ganha mais três colunas (sistema, superfície, área). Os acabamentos são recalculados toda vez que você gera a lista de compras.
+
 ## O que o CutVisor ainda não faz
 
 **Painéis.** Compensado, OSB, MDF, aglomerado, painéis CLT — otimizá-los requer encaixe 2D (encaixar retângulos em um painel), um problema diferente e mais complexo do que o corte linear. Está no roteiro de desenvolvimento.
@@ -1243,7 +1491,7 @@ Ambos os arquivos são salvos como texto UTF-8 com uma marca de ordem de bytes (
 
 **Cálculos estruturais.** O CutVisor diz o que comprar, não se vai aguentar em pé. A verificação estrutural segue seu próprio processo e suas próprias normas (EC5 para madeira na Europa). As duas coisas são complementares, não concorrentes.
 
-**Ferragens de conexão.** Parafusos, pregos, cantoneiras, suportes de viga — fora do escopo desta versão.
+**Ferragens de conexão automáticas.** Parafusos, pregos, cantoneiras e suportes de viga podem ser listados à mão (veja Lista de ferragens), mas o CutVisor ainda não detecta as conexões nem dimensiona os elementos de fixação.
 
 Essas não são lacunas esquecidas. Elas definem o limite do que o CutVisor promete fazer bem, que é a única coisa que ele realmente faz: dizer que madeira comprar e como cortá-la.
 
@@ -1276,7 +1524,7 @@ Texto completo da licença: https://www.gnu.org/licenses/gpl-3.0.html
 
 ### Recursos Pro — Licença comercial
 
-Os recursos Pro do CutVisor — importação CSV para materiais e estoque, estilo avançado de overlay, predefinições de espécies de madeira, predefinições personalizadas de materiais salvas, variação de largura e limites de desdobramento/corte transversal, emenda de várias tábuas, importação JARCH Vis, e todos os recursos desbloqueados por uma chave de ativação `CWTW-…` — não são cobertos pela GPL.
+Os recursos Pro do CutVisor — importação CSV para materiais e estoque, estilo avançado de overlay, predefinições de espécies de madeira, predefinições personalizadas de materiais salvas, variação de largura e limites de desdobramento/corte transversal, emenda de várias tábuas, importação JARCH Vis, o módulo Acabamentos (produtos, sistemas de acabamento, quantidades e modo manutenção), e todos os recursos desbloqueados por uma chave de ativação `CWTW-…` — não são cobertos pela GPL.
 
 Ao comprar uma chave Pro, você concorda com os seguintes termos:
 
