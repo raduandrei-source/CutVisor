@@ -211,7 +211,7 @@ html[data-theme="dark"] #cv-theme-toggle .icon-moon { display: none; }
       try { localStorage.setItem(KEY, next); } catch (e) {}
     });
     if (sel) sel.addEventListener("change", label);
-    label();
+    setTimeout(label, 0);   // after the guide script has picked the language
   });
 })();
 </script>
