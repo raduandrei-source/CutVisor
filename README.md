@@ -28,7 +28,7 @@ CutVisor is a Blender addon for timber structure projects. Assign part IDs to yo
 | Identify mode — click a piece in the report, find it in the viewport | ✓ | ✓ |
 | Hardware list (manual) in the Shopping List and BOM | ✓ | ✓ |
 | Finishes: area to finish (m², end grain separately) | ✓ | ✓ |
-| Help (?) and quick settings (gear) in the panel header | ✓ | ✓ |
+| Help (?) and settings menu (gear) in the panel header | ✓ | ✓ |
 | Multi-language UI (14 languages) | ✓ | ✓ |
 | **Rip Cut, Cross-Cut, Long Rip settings** | — | ✓ |
 | **Width Variation** | — | ✓ |
@@ -56,7 +56,7 @@ CutVisor is a Blender addon for timber structure projects. Assign part IDs to yo
 
 > **Updating:** remove the old version first (Add-ons → CutVisor → ⌄ → Uninstall), restart Blender, then install the new zip.
 >
-> **Pro users:** go to the Settings tab (or the gear in the panel header) → enter your activation key → Pro features unlock instantly.
+> **Pro users:** click the gear (⚙) in the CutVisor panel header → **License** → paste or enter your activation key → Pro features unlock instantly.
 
 ---
 
@@ -112,10 +112,10 @@ CutVisor ships with translations for **14 languages:**
 English · Français · Deutsch · Română · Polski · Español · Italiano · Português · Русский · 中文 · 日本語 · 한국어 · العربية · Türkçe
 
 To add a new language or fix a translation:
-1. **Settings → Export Translations CSV**
+1. **Gear menu (⚙) → Translations CSV → Export**
 2. Add a new column with your language name
 3. Fill in the translations
-4. **Settings → Import Translations CSV**
+4. **Gear menu (⚙) → Translations CSV → Import**
 
 ---
 
@@ -140,7 +140,7 @@ cutvisor/
 - New: **Cut Sheets** — printable SVG diagram and DXF R12 of every board, to scale, with Part IDs, numbered cut order and hatched waste
 - New: **Identify mode** — expand a board in the Shopping List report and click a piece to select it in the viewport, with a single temporary label
 - New: **Hardware list (manual)** — screws, bolts, hinges with quantities and prices, added to the Shopping List and Consolidated BOM CSV
-- New: **help (?)** and **quick settings (gear)** buttons in the panel header; help opens the user guide at the section for the current tab
+- New: **help (?)** and **settings (gear)** buttons in the panel header — help opens the user guide at the section for the current tab; the gear menu replaces the Settings tab (tabs are now Materials · Parts · JARCH / Planning · Finishes · View)
 - New: Fir and Douglas fir species presets
 - Fixed: the species preset selector did not reset after a preset was applied (Blender 5.x)
 

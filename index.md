@@ -231,7 +231,7 @@ If your project is built mainly from sheet goods (plywood, MDF, particle board p
 
 You're building a deck, a garden shed, a timber-frame extension. You have a model — maybe rough, maybe precise — and you need to know what to buy before you drive to the builder's merchant. CutVisor gives you a list you can print and take with you. No overbuying, no second trip because you ran short.
 
-The free Core version is designed exactly for this: unlimited projects, no time limit, all the core functionality without payment. Download the addon, install it in Blender, and start using it immediately — no registration, no account. Pro features are unlocked by entering a licence key in the Settings tab.
+The free Core version is designed exactly for this: unlimited projects, no time limit, all the core functionality without payment. Download the addon, install it in Blender, and start using it immediately — no registration, no account. Pro features are unlocked by entering a licence key in the settings menu — the gear in the panel header.
 
 ### Makers and workshop regulars
 
@@ -409,9 +409,9 @@ In the Planning report, every board can be expanded (▶) to list its pieces. Cl
 
 Below the cut optimizer, the **Hardware (manual)** box keeps a simple list of what you will buy besides timber — screws, bolts, hinges, brackets: item, specification, quantity, unit price and currency. Totals per currency are shown live, and the list is added as a HARDWARE section to the Shopping List CSV and to the Consolidated BOM. There is no automatic detection and no structural check: you type in what you intend to buy.
 
-### Help and quick settings
+### Help and settings
 
-Two small buttons sit on the right of the CutVisor panel header. **?** opens this guide in the interface language (English, French, Spanish or Portuguese; the other languages open the English version) at the section for the tab you are in. The **gear** opens quick settings: installed version, language, scene units, default currency, licence status, a shortcut to the full Settings tab and a link to this guide.
+Two small buttons sit on the right of the CutVisor panel header. **?** opens this guide in the interface language (English, French, Spanish or Portuguese; the other languages open the English version) at the section for the tab you are in. The **gear** opens the settings menu, which replaces the former Settings tab: the installed version, language, scene units and licence at the top, then collapsible sections for the default currency, CSV import and export of materials and stock, auto-assigning materials from imported models, the translations CSV and (Pro) your saved material presets. The tabs are now Materials · Parts · JARCH Import on the first row and Planning · Finishes · View on the second.
 
 ## <a id="help-finish-en"></a>Finishes — paint, primer and treatments
 
@@ -471,16 +471,16 @@ These are not afterthoughts. They define the boundary of what CutVisor promises 
 
 ## <a id="help-settings-en"></a>Activation — Core and Pro
 
-CutVisor is distributed as a single add-on package. When installed without a licence key, it runs in Core mode. Entering a valid Pro key in **Settings → Enter / Change Key** unlocks all Pro features instantly — no restart required.
+CutVisor is distributed as a single add-on package. When installed without a licence key, it runs in Core mode. Entering a valid Pro key in the **gear menu (⚙) → Enter key** unlocks all Pro features instantly — no restart required.
 
 The licence key has the format `CWTW-XXXX-XXXX-XXXX-XXXX`. It is validated locally using a cryptographic signature — no internet connection is required for activation or for continued use.
 
 **To activate Pro:**
 1. Purchase a key at https://cutvisor.gumroad.com/l/yiqahd
 2. Copy the key from your confirmation email or Gumroad library
-3. Open Blender → N-panel → CutVisor → **Settings**
-4. Click **Paste Key** (if the key is in your clipboard) or **Enter / Change Key**
-5. The status line changes to "✓ CutVisor Pro active"
+3. Open Blender → N-panel → CutVisor → click the **gear** (⚙) in the panel header
+4. Under **License**, click **Paste key** (if the key is in your clipboard) or **Enter key**
+5. The status line changes to "PRO Active ✓"
 
 A single key is licensed for personal use on computers you own. Keys do not expire and remain valid across updates.
 
@@ -573,7 +573,7 @@ Si votre projet est construit principalement à partir de panneaux (contreplaqu�
 
 Vous construisez une terrasse, un abri de jardin, une extension à ossature bois. Vous avez un modèle — peut-être grossier, peut-être précis — et vous devez savoir quoi acheter avant d'aller chez le négociant. CutVisor vous donne une liste que vous pouvez imprimer et emporter. Pas de surachat, pas de second voyage parce que vous en manquiez.
 
-La version Core gratuite est conçue exactement pour cela : projets illimités, pas de limite de temps, toute la fonctionnalité essentielle sans paiement. Téléchargez l'extension, installez-la dans Blender, et commencez à l'utiliser immédiatement — pas d'inscription, pas de compte. Les fonctionnalités Pro se débloquent en saisissant une clé de licence dans l'onglet Settings.
+La version Core gratuite est conçue exactement pour cela : projets illimités, pas de limite de temps, toute la fonctionnalité essentielle sans paiement. Téléchargez l'extension, installez-la dans Blender, et commencez à l'utiliser immédiatement — pas d'inscription, pas de compte. Les fonctionnalités Pro se débloquent en saisissant une clé de licence dans le menu des réglages — la roue dentée de l'en-tête du panneau.
 
 ### Makers et habitués de l'atelier
 
@@ -751,9 +751,9 @@ Dans le rapport de planification, chaque planche peut être dépliée (▶) pour
 
 Sous l'optimiseur de coupe, le cadre **Quincaillerie (manuelle)** tient une liste simple de ce que vous achèterez en plus du bois — vis, boulons, charnières, équerres : article, spécification, quantité, prix unitaire et devise. Les totaux par devise s'affichent en direct, et la liste est ajoutée comme section HARDWARE au CSV de la liste d'achats et au BOM consolidé. Il n'y a ni détection automatique ni vérification structurelle : vous saisissez ce que vous comptez acheter.
 
-### Aide et réglages rapides
+### Aide et réglages
 
-Deux petits boutons se trouvent à droite de l'en-tête du panneau CutVisor. **?** ouvre ce guide dans la langue de l'interface (anglais, français, espagnol ou portugais ; les autres langues ouvrent la version anglaise), à la section de l'onglet où vous vous trouvez. La **roue dentée** ouvre les réglages rapides : version installée, langue, unités de la scène, devise par défaut, état de la licence, un raccourci vers l'onglet Paramètres complet et un lien vers ce guide.
+Deux petits boutons se trouvent à droite de l'en-tête du panneau CutVisor. **?** ouvre ce guide dans la langue de l'interface (anglais, français, espagnol ou portugais ; les autres langues ouvrent la version anglaise), à la section de l'onglet où vous vous trouvez. La **roue dentée** ouvre le menu des réglages, qui remplace l'ancien onglet Paramètres : version installée, langue, unités de la scène et licence en haut, puis des sections repliables pour la devise par défaut, l'import et l'export CSV des matériaux et du stock, l'attribution automatique des matériaux des modèles importés, le CSV des traductions et (Pro) vos préréglages de matériaux enregistrés. Les onglets sont désormais Matériaux · Pièces · Import JARCH sur la première ligne et Planification · Finitions · Vue sur la seconde.
 
 ## <a id="help-finish-fr"></a>Finitions — peinture, primaire et traitements
 
@@ -813,16 +813,16 @@ Ce ne sont pas des oublis. Ils définissent les limites de ce que CutVisor prome
 
 ## <a id="help-settings-fr"></a>Activation — Core et Pro
 
-CutVisor est distribué comme une extension unique. Installée sans clé de licence, elle fonctionne en mode Core. Saisir une clé Pro valide dans **Settings → Enter / Change Key** débloque toutes les fonctionnalités Pro instantanément — aucun redémarrage requis.
+CutVisor est distribué comme une extension unique. Installée sans clé de licence, elle fonctionne en mode Core. Saisir une clé Pro valide dans le **menu roue dentée (⚙) → Saisir la clé** débloque toutes les fonctionnalités Pro instantanément — aucun redémarrage requis.
 
 La clé de licence a le format `CWTW-XXXX-XXXX-XXXX-XXXX`. Elle est validée localement via une signature cryptographique — aucune connexion internet n'est nécessaire pour l'activation ou l'utilisation continue.
 
 **Pour activer Pro :**
 1. Achetez une clé sur https://cutvisor.gumroad.com/l/yiqahd
 2. Copiez la clé depuis votre e-mail de confirmation ou votre bibliothèque Gumroad
-3. Ouvrez Blender → panneau N → CutVisor → **Settings**
-4. Cliquez sur **Paste Key** (si la clé est dans votre presse-papiers) ou **Enter / Change Key**
-5. La ligne de statut passe à "✓ CutVisor Pro active"
+3. Ouvrez Blender → panneau N → CutVisor → cliquez sur la **roue dentée** (⚙) dans l'en-tête du panneau
+4. Sous **Licence**, cliquez sur **Coller la clé** (si la clé est dans votre presse-papiers) ou **Saisir la clé**
+5. La ligne de statut passe à "PRO Actif ✓"
 
 Une clé unique est licenciée pour un usage personnel sur les ordinateurs que vous possédez. Les clés n'expirent pas et restent valides à travers les mises à jour.
 
@@ -915,7 +915,7 @@ Si tu proyecto se construye principalmente con tableros (contrachapado, MDF, agl
 
 Estás construyendo una terraza, un cobertizo, una ampliación con entramado de madera. Tienes un modelo — quizá tosco, quizá preciso — y necesitas saber qué comprar antes de ir al almacén de materiales. CutVisor te da una lista que puedes imprimir y llevar contigo. Sin comprar de más, sin un segundo viaje por quedarte corto.
 
-La versión Core gratuita está pensada exactamente para esto: proyectos ilimitados, sin límite de tiempo, toda la funcionalidad esencial sin pago. Descarga el complemento, instálalo en Blender, y empieza a usarlo de inmediato — sin registro, sin cuenta. Las funciones Pro se desbloquean introduciendo una clave de licencia en la pestaña Settings.
+La versión Core gratuita está pensada exactamente para esto: proyectos ilimitados, sin límite de tiempo, toda la funcionalidad esencial sin pago. Descarga el complemento, instálalo en Blender, y empieza a usarlo de inmediato — sin registro, sin cuenta. Las funciones Pro se desbloquean introduciendo una clave de licencia en el menú de ajustes — la rueda dentada de la cabecera del panel.
 
 ### Makers y habituales del taller
 
@@ -1093,9 +1093,9 @@ En el informe de Planificación, cada tablón puede desplegarse (▶) para lista
 
 Debajo del optimizador de corte, el recuadro **Herrajes (manual)** guarda una lista sencilla de lo que comprarás además de la madera — tornillos, pernos, bisagras, escuadras: artículo, especificación, cantidad, precio unitario y moneda. Los totales por moneda se muestran en directo, y la lista se añade como sección HARDWARE al CSV de la lista de compras y al BOM consolidado. No hay detección automática ni comprobación estructural: escribes lo que piensas comprar.
 
-### Ayuda y ajustes rápidos
+### Ayuda y ajustes
 
-A la derecha de la cabecera del panel CutVisor hay dos botones pequeños. **?** abre esta guía en el idioma de la interfaz (inglés, francés, español o portugués; los demás idiomas abren la versión inglesa), en la sección de la pestaña en la que estás. La **rueda dentada** abre los ajustes rápidos: versión instalada, idioma, unidades de la escena, moneda por defecto, estado de la licencia, un acceso a la pestaña Configuración completa y un enlace a esta guía.
+A la derecha de la cabecera del panel CutVisor hay dos botones pequeños. **?** abre esta guía en el idioma de la interfaz (inglés, francés, español o portugués; los demás idiomas abren la versión inglesa), en la sección de la pestaña en la que estás. La **rueda dentada** abre el menú de ajustes, que sustituye a la antigua pestaña Configuración: versión instalada, idioma, unidades de la escena y licencia arriba, y después secciones plegables para la moneda por defecto, la importación y exportación CSV de materiales y stock, la asignación automática de materiales de modelos importados, el CSV de traducciones y (Pro) tus preajustes de materiales guardados. Las pestañas son ahora Materiales · Piezas · Importar JARCH en la primera fila y Planificación · Acabados · Vista en la segunda.
 
 ## <a id="help-finish-es"></a>Acabados — pintura, imprimación y tratamientos
 
@@ -1155,16 +1155,16 @@ Estas no son omisiones casuales. Definen el límite de lo que CutVisor promete h
 
 ## <a id="help-settings-es"></a>Activación — Core y Pro
 
-CutVisor se distribuye como un único complemento. Instalado sin clave de licencia, funciona en modo Core. Introducir una clave Pro válida en **Settings → Enter / Change Key** desbloquea todas las funciones Pro al instante — sin necesidad de reiniciar.
+CutVisor se distribuye como un único complemento. Instalado sin clave de licencia, funciona en modo Core. Introducir una clave Pro válida en el **menú de la rueda dentada (⚙) → Introducir clave** desbloquea todas las funciones Pro al instante — sin necesidad de reiniciar.
 
 La clave de licencia tiene el formato `CWTW-XXXX-XXXX-XXXX-XXXX`. Se valida localmente mediante una firma criptográfica — no se requiere conexión a internet para la activación ni para el uso continuado.
 
 **Para activar Pro:**
 1. Compra una clave en https://cutvisor.gumroad.com/l/yiqahd
 2. Copia la clave desde tu correo de confirmación o tu biblioteca de Gumroad
-3. Abre Blender → panel N → CutVisor → **Settings**
-4. Pulsa **Paste Key** (si la clave está en tu portapapeles) o **Enter / Change Key**
-5. La línea de estado cambia a "✓ CutVisor Pro active"
+3. Abre Blender → panel N → CutVisor → pulsa la **rueda dentada** (⚙) de la cabecera del panel
+4. En **Licencia**, pulsa **Pegar clave** (si la clave está en tu portapapeles) o **Introducir clave**
+5. La línea de estado cambia a "PRO Activo ✓"
 
 Una clave se licencia para uso personal en ordenadores que poseas. Las claves no caducan y permanecen válidas a través de las actualizaciones.
 
@@ -1257,7 +1257,7 @@ Se o seu projeto é construído principalmente com painéis (compensado, MDF, ag
 
 Você está construindo um deck, um galpão de jardim, uma ampliação em wood frame. Você tem um modelo — talvez bruto, talvez preciso — e precisa saber o que comprar antes de ir à madeireira. O CutVisor te dá uma lista que pode imprimir e levar com você. Sem comprar demais, sem uma segunda viagem por ter ficado faltando material.
 
-A versão Core gratuita foi pensada exatamente para isso: projetos ilimitados, sem limite de tempo, toda a funcionalidade essencial sem pagamento. Baixe o addon, instale no Blender, e comece a usar imediatamente — sem cadastro, sem conta. Os recursos Pro são desbloqueados ao inserir uma chave de licença na aba Settings.
+A versão Core gratuita foi pensada exatamente para isso: projetos ilimitados, sem limite de tempo, toda a funcionalidade essencial sem pagamento. Baixe o addon, instale no Blender, e comece a usar imediatamente — sem cadastro, sem conta. Os recursos Pro são desbloqueados ao inserir uma chave de licença no menu de configurações — a engrenagem no cabeçalho do painel.
 
 ### Makers e frequentadores de ateliê
 
@@ -1435,9 +1435,9 @@ No relatório de Planejamento, cada tábua pode ser expandida (▶) para listar 
 
 Abaixo do otimizador de corte, o quadro **Ferragens (manual)** mantém uma lista simples do que você vai comprar além da madeira — parafusos, pinos, dobradiças, cantoneiras: item, especificação, quantidade, preço unitário e moeda. Os totais por moeda aparecem em tempo real, e a lista é adicionada como seção HARDWARE ao CSV da lista de compras e ao BOM consolidado. Não há detecção automática nem verificação estrutural: você digita o que pretende comprar.
 
-### Ajuda e configurações rápidas
+### Ajuda e configurações
 
-Há dois botões pequenos à direita do cabeçalho do painel CutVisor. **?** abre este guia no idioma da interface (inglês, francês, espanhol ou português; os demais idiomas abrem a versão em inglês), na seção da aba em que você está. A **engrenagem** abre as configurações rápidas: versão instalada, idioma, unidades da cena, moeda padrão, status da licença, um atalho para a aba Configurações completa e um link para este guia.
+Há dois botões pequenos à direita do cabeçalho do painel CutVisor. **?** abre este guia no idioma da interface (inglês, francês, espanhol ou português; os demais idiomas abrem a versão em inglês), na seção da aba em que você está. A **engrenagem** abre o menu de configurações, que substitui a antiga aba Configurações: versão instalada, idioma, unidades da cena e licença no topo, depois seções recolhíveis para a moeda padrão, a importação e exportação CSV de materiais e estoque, a atribuição automática de materiais de modelos importados, o CSV de traduções e (Pro) suas predefinições de materiais salvas. As abas agora são Materiais · Peças · Importar JARCH na primeira linha e Planejamento · Acabamentos · Visualização na segunda.
 
 ## <a id="help-finish-pt"></a>Acabamentos — tinta, primer e tratamentos
 
@@ -1497,16 +1497,16 @@ Essas não são lacunas esquecidas. Elas definem o limite do que o CutVisor prom
 
 ## <a id="help-settings-pt"></a>Ativação — Core e Pro
 
-O CutVisor é distribuído como um único addon. Instalado sem chave de licença, ele funciona em modo Core. Inserir uma chave Pro válida em **Settings → Enter / Change Key** desbloqueia todos os recursos Pro instantaneamente — sem precisar reiniciar.
+O CutVisor é distribuído como um único addon. Instalado sem chave de licença, ele funciona em modo Core. Inserir uma chave Pro válida no **menu da engrenagem (⚙) → Inserir chave** desbloqueia todos os recursos Pro instantaneamente — sem precisar reiniciar.
 
 A chave de licença tem o formato `CWTW-XXXX-XXXX-XXXX-XXXX`. Ela é validada localmente por meio de uma assinatura criptográfica — nenhuma conexão à internet é necessária para a ativação ou para o uso contínuo.
 
 **Para ativar o Pro:**
 1. Compre uma chave em https://cutvisor.gumroad.com/l/yiqahd
 2. Copie a chave do seu e-mail de confirmação ou da sua biblioteca no Gumroad
-3. Abra o Blender → painel N → CutVisor → **Settings**
-4. Clique em **Paste Key** (se a chave estiver na área de transferência) ou **Enter / Change Key**
-5. A linha de status muda para "✓ CutVisor Pro active"
+3. Abra o Blender → painel N → CutVisor → clique na **engrenagem** (⚙) no cabeçalho do painel
+4. Em **Licença**, clique em **Colar chave** (se a chave estiver na área de transferência) ou **Inserir chave**
+5. A linha de status muda para "PRO Ativo ✓"
 
 Uma única chave é licenciada para uso pessoal em computadores que você possui. As chaves não expiram e permanecem válidas em todas as atualizações.
 
