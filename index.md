@@ -163,9 +163,17 @@
     var select = document.getElementById("cv-lang-select");
     var saved = "en";
     try { saved = localStorage.getItem("cv-lang") || "en"; } catch (e) {}
+    // ?lang=xx from the addon's help button wins over the saved choice
+    var q = (window.location.search.match(/[?&]lang=([a-z]{2})/) || [])[1];
+    if (q) saved = q;
     if (LANGS.indexOf(saved) === -1) saved = "en";
     select.value = saved;
     setLanguage(saved);
+    // #help-<tab>-<lang>: the target was hidden until its language block was shown
+    if (window.location.hash) {
+      var target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      if (target) setTimeout(function () { target.scrollIntoView(); }, 0);
+    }
     select.addEventListener("change", function () {
       setLanguage(this.value);
     });
@@ -229,9 +237,9 @@ The free Core version is designed exactly for this: unlimited projects, no time 
 
 You work with wood regularly — furniture, objects, installations. You've developed an instinct for material, but instinct has limits when projects get complex. CutVisor lets you validate your instinct with numbers, quickly. It's not about replacing craft knowledge — it's about giving that knowledge a tool that keeps up with it.
 
-## Feature explanations — what everything means
+## <a id="help-finish-en"></a>Feature explanations — what everything means
 
-### Volume Filter (Parts tab)
+### <a id="help-parts-en"></a>Volume Filter (Parts tab)
 
 Most real imports aren't clean. A model brought in from Rhino, SketchUp or IFC typically lands as one large collection containing not just the timber pieces but every screw, bolt, and bracket modelled along with them — sometimes hundreds of small objects mixed in with the boards you actually want to cut. Sorting these out by hand, one click at a time, doesn't scale.
 
@@ -247,7 +255,7 @@ The Volume Filter gives you a fast way to separate the two by size, since hardwa
 
 None of this requires a material to be assigned first — volume is read directly from the mesh geometry, so filtering can happen as the very first step after import, before any material or Part ID workflow begins.
 
-### Materials and pricing
+### <a id="help-materials-en"></a>Materials and pricing
 
 **Material** in CutVisor means a wood species with its physical properties: density (how heavy it is per cubic metre) and price (how much it costs per unit). You can price by kilogram, by cubic metre, or by piece — whichever matches how your supplier invoices.
 
@@ -265,7 +273,7 @@ Stock sizes are the boards available from your supplier — the dimensions they 
 
 The stock list is saved with your Blender file. You build it once for a given supplier and reuse it across projects. You can also export it to CSV for backup or sharing with colleagues.
 
-### The cut optimizer — how it works in plain language
+### <a id="help-planning-en"></a>The cut optimizer — how it works in plain language
 
 The optimizer answers one question: given the pieces I need and the boards available, what's the most efficient way to cut?
 
@@ -325,7 +333,7 @@ This warning exists because ripping on a table saw is a different operation from
 
 Set to 0 (the default), no capacity check is performed.
 
-### JARCH Vis import (PRO)
+### <a id="help-jarch-en"></a>JARCH Vis import (PRO)
 
 JARCH Vis is a Blender addon that creates architectural cladding — siding, floors, roof boarding — as single mesh objects containing many individual boards. CutVisor PRO can split these objects into individual measurable pieces automatically.
 
@@ -341,7 +349,7 @@ This measurement is taken from the base mesh, before modifiers are evaluated —
 
 After import, pieces appear in a dedicated Blender collection named after the original object, ready for material assignment and Part ID generation.
 
-### Viewport labels
+### <a id="help-view-en"></a>Viewport labels
 
 The View tab controls labels drawn directly in the 3D viewport for any selected object. You can show any combination of Part ID, object name, dimensions and instance count. Labels are anchored relative to the N-panel (right sidebar) or T-panel (left toolbar) — not to the screen edge — so they never overlap with the CutVisor panel or any other Blender panel, even if you resize them.
 
@@ -399,7 +407,7 @@ Both files are saved as UTF-8 text with a leading byte-order mark, which means t
 
 These are not afterthoughts. They define the boundary of what CutVisor promises to do well, which is the one thing it actually does: tell you what timber to buy and how to cut it.
 
-## Activation — Core and Pro
+## <a id="help-settings-en"></a>Activation — Core and Pro
 
 CutVisor is distributed as a single add-on package. When installed without a licence key, it runs in Core mode. Entering a valid Pro key in **Settings → Enter / Change Key** unlocks all Pro features instantly — no restart required.
 
@@ -509,9 +517,9 @@ La version Core gratuite est conçue exactement pour cela : projets illimités, 
 
 Vous travaillez régulièrement le bois — meubles, objets, installations. Vous avez développé un instinct pour la matière, mais l'instinct a ses limites quand les projets se complexifient. CutVisor vous permet de valider votre instinct avec des chiffres, rapidement. Il ne s'agit pas de remplacer le savoir-faire artisanal — il s'agit de donner à ce savoir-faire un outil qui le suit.
 
-## Explication des fonctionnalités — ce que tout signifie
+## <a id="help-finish-fr"></a>Explication des fonctionnalités — ce que tout signifie
 
-### Filtre de volume (onglet Parts)
+### <a id="help-parts-fr"></a>Filtre de volume (onglet Parts)
 
 La plupart des imports réels ne sont pas propres. Un modèle importé depuis Rhino, SketchUp ou IFC arrive généralement comme une grande collection contenant non seulement les pièces en bois mais aussi chaque vis, boulon et équerre modélisés avec elles — parfois des centaines de petits objets mélangés aux planches que vous voulez réellement couper. Les trier à la main, un clic à la fois, ne tient pas à l'échelle.
 
@@ -527,7 +535,7 @@ Le Filtre de volume vous donne un moyen rapide de séparer les deux par taille, 
 
 Rien de tout cela ne nécessite qu'un matériau soit déjà assigné — le volume est lu directement depuis la géométrie du maillage, donc le filtrage peut être la toute première étape après l'import, avant tout travail de matériaux ou de Part ID.
 
-### Matériaux et tarification
+### <a id="help-materials-fr"></a>Matériaux et tarification
 
 Un **Matériau** dans CutVisor désigne une essence de bois avec ses propriétés physiques : densité (son poids par mètre cube) et prix (son coût par unité). Vous pouvez tarifer au kilogramme, au mètre cube, ou à la pièce — selon la façon dont votre fournisseur facture.
 
@@ -545,7 +553,7 @@ Les tailles de stock sont les planches disponibles chez votre fournisseur — le
 
 La liste de stock est enregistrée avec votre fichier Blender. Vous la construisez une fois pour un fournisseur donné et la réutilisez d'un projet à l'autre. Vous pouvez aussi l'exporter en CSV pour la sauvegarder ou la partager avec des collègues.
 
-### L'optimiseur de coupe — comment il fonctionne en termes simples
+### <a id="help-planning-fr"></a>L'optimiseur de coupe — comment il fonctionne en termes simples
 
 L'optimiseur répond à une seule question : étant donné les pièces dont j'ai besoin et les planches disponibles, quelle est la façon la plus efficace de couper ?
 
@@ -605,7 +613,7 @@ Cet avertissement existe parce que refendre à la scie à format est une opérat
 
 Réglé à 0 (valeur par défaut), aucune vérification de capacité n'est effectuée.
 
-### Import JARCH Vis (PRO)
+### <a id="help-jarch-fr"></a>Import JARCH Vis (PRO)
 
 JARCH Vis est une extension Blender qui crée des revêtements architecturaux — bardage, planchers, toitures en bois — sous forme d'objets mesh uniques contenant de nombreuses planches individuelles. CutVisor PRO peut diviser automatiquement ces objets en pièces individuelles mesurables.
 
@@ -621,7 +629,7 @@ Cette mesure est effectuée sur le maillage de base, avant l'évaluation des mod
 
 Après l'import, les pièces apparaissent dans une collection Blender dédiée, nommée d'après l'objet d'origine, prêtes pour l'assignation de matériau et la génération de Part ID.
 
-### Étiquettes dans la vue 3D
+### <a id="help-view-fr"></a>Étiquettes dans la vue 3D
 
 L'onglet View contrôle les étiquettes dessinées directement dans la vue 3D pour tout objet sélectionné. Vous pouvez afficher n'importe quelle combinaison de Part ID, nom de l'objet, dimensions et nombre d'instances. Les étiquettes sont ancrées par rapport au panneau N (barre latérale droite) ou au panneau T (barre d'outils gauche) — pas au bord de l'écran — donc elles ne se superposent jamais au panneau CutVisor ni à aucun autre panneau Blender, même si vous les redimensionnez.
 
@@ -679,7 +687,7 @@ Les deux fichiers sont enregistrés en texte UTF-8 avec une marque d'ordre des o
 
 Ce ne sont pas des oublis. Ils définissent les limites de ce que CutVisor promet de bien faire, qui est la seule chose qu'il fait réellement : vous dire quel bois acheter et comment le couper.
 
-## Activation — Core et Pro
+## <a id="help-settings-fr"></a>Activation — Core et Pro
 
 CutVisor est distribué comme une extension unique. Installée sans clé de licence, elle fonctionne en mode Core. Saisir une clé Pro valide dans **Settings → Enter / Change Key** débloque toutes les fonctionnalités Pro instantanément — aucun redémarrage requis.
 
@@ -789,9 +797,9 @@ La versión Core gratuita está pensada exactamente para esto: proyectos ilimita
 
 Trabajas la madera con regularidad — muebles, objetos, instalaciones. Has desarrollado un instinto para el material, pero el instinto tiene límites cuando los proyectos se complican. CutVisor te permite validar tu instinto con números, rápidamente. No se trata de sustituir el conocimiento artesanal — se trata de darle a ese conocimiento una herramienta que lo acompañe.
 
-## Explicación de funciones — qué significa cada cosa
+## <a id="help-finish-es"></a>Explicación de funciones — qué significa cada cosa
 
-### Filtro de volumen (pestaña Parts)
+### <a id="help-parts-es"></a>Filtro de volumen (pestaña Parts)
 
 La mayoría de las importaciones reales no están limpias. Un modelo importado desde Rhino, SketchUp o IFC suele llegar como una gran colección que contiene no solo las piezas de madera sino también cada tornillo, perno y escuadra modelados junto con ellas — a veces cientos de objetos pequeños mezclados con los tablones que realmente quieres cortar. Separarlos a mano, clic a clic, no es viable a esa escala.
 
@@ -807,7 +815,7 @@ El Filtro de volumen te da una forma rápida de separar ambos por tamaño, ya qu
 
 Nada de esto requiere que haya un material asignado primero — el volumen se lee directamente de la geometría de la malla, así que el filtrado puede ser el primer paso tras la importación, antes de cualquier flujo de materiales o Part ID.
 
-### Materiales y precios
+### <a id="help-materials-es"></a>Materiales y precios
 
 Un **Material** en CutVisor es una especie de madera con sus propiedades físicas: densidad (cuánto pesa por metro cúbico) y precio (cuánto cuesta por unidad). Puedes fijar el precio por kilogramo, por metro cúbico, o por pieza — lo que coincida con cómo factura tu proveedor.
 
@@ -825,7 +833,7 @@ Los tamaños de stock son los tablones disponibles en tu proveedor — las dimen
 
 La lista de stock se guarda con tu archivo de Blender. La construyes una vez para un proveedor dado y la reutilizas en distintos proyectos. También puedes exportarla a CSV como copia de seguridad o para compartirla con colegas.
 
-### El optimizador de corte — cómo funciona en términos sencillos
+### <a id="help-planning-es"></a>El optimizador de corte — cómo funciona en términos sencillos
 
 El optimizador responde a una sola pregunta: dadas las piezas que necesito y los tablones disponibles, ¿cuál es la forma más eficiente de cortar?
 
@@ -885,7 +893,7 @@ Este aviso existe porque recortar a medida en la sierra de mesa es una operació
 
 Fijado en 0 (valor por defecto), no se realiza ninguna comprobación de capacidad.
 
-### Importación JARCH Vis (PRO)
+### <a id="help-jarch-es"></a>Importación JARCH Vis (PRO)
 
 JARCH Vis es un complemento de Blender que crea revestimientos arquitectónicos — tablazón, suelos, cubiertas de madera — como objetos de malla única que contienen muchos tablones individuales. CutVisor PRO puede dividir estos objetos en piezas individuales medibles automáticamente.
 
@@ -901,7 +909,7 @@ Esta medición se toma de la malla base, antes de evaluar los modificadores — 
 
 Tras la importación, las piezas aparecen en una colección de Blender dedicada, nombrada según el objeto original, listas para la asignación de material y la generación de Part ID.
 
-### Etiquetas en el visor 3D
+### <a id="help-view-es"></a>Etiquetas en el visor 3D
 
 La pestaña View controla las etiquetas dibujadas directamente en el visor 3D para cualquier objeto seleccionado. Puedes mostrar cualquier combinación de Part ID, nombre del objeto, dimensiones y número de instancias. Las etiquetas se anclan en relación con el panel N (barra lateral derecha) o el panel T (barra de herramientas izquierda) — no al borde de la pantalla — así que nunca se solapan con el panel de CutVisor ni con ningún otro panel de Blender, aunque los redimensiones.
 
@@ -959,7 +967,7 @@ Ambos archivos se guardan como texto UTF-8 con una marca de orden de bytes (BOM)
 
 Estas no son omisiones casuales. Definen el límite de lo que CutVisor promete hacer bien, que es la única cosa que realmente hace: decirte qué madera comprar y cómo cortarla.
 
-## Activación — Core y Pro
+## <a id="help-settings-es"></a>Activación — Core y Pro
 
 CutVisor se distribuye como un único complemento. Instalado sin clave de licencia, funciona en modo Core. Introducir una clave Pro válida en **Settings → Enter / Change Key** desbloquea todas las funciones Pro al instante — sin necesidad de reiniciar.
 
@@ -1069,9 +1077,9 @@ A versão Core gratuita foi pensada exatamente para isso: projetos ilimitados, s
 
 Você trabalha com madeira regularmente — móveis, objetos, instalações. Desenvolveu um instinto para o material, mas o instinto tem limites quando os projetos ficam complexos. O CutVisor permite validar seu instinto com números, rapidamente. Não se trata de substituir o conhecimento artesanal — se trata de dar a esse conhecimento uma ferramenta que o acompanhe.
 
-## Explicação das funções — o que cada coisa significa
+## <a id="help-finish-pt"></a>Explicação das funções — o que cada coisa significa
 
-### Filtro de volume (aba Parts)
+### <a id="help-parts-pt"></a>Filtro de volume (aba Parts)
 
 A maioria das importações reais não vem limpa. Um modelo importado do Rhino, SketchUp ou IFC geralmente chega como uma grande coleção contendo não só as peças de madeira, mas também todo parafuso, cavilha e suporte modelados junto com elas — às vezes centenas de objetos pequenos misturados com as tábuas que você realmente quer cortar. Separá-los manualmente, um clique por vez, não escala.
 
@@ -1087,7 +1095,7 @@ O Filtro de volume oferece uma forma rápida de separar os dois por tamanho, já
 
 Nada disso requer que um material já esteja atribuído — o volume é lido direto da geometria da malha, então a filtragem pode ser o primeiro passo logo após a importação, antes de qualquer fluxo de materiais ou Part ID.
 
-### Materiais e preços
+### <a id="help-materials-pt"></a>Materiais e preços
 
 **Material** no CutVisor significa uma espécie de madeira com suas propriedades físicas: densidade (quanto pesa por metro cúbico) e preço (quanto custa por unidade). Você pode precificar por quilograma, por metro cúbico, ou por peça — o que corresponder à forma como seu fornecedor fatura.
 
@@ -1105,7 +1113,7 @@ Tamanhos de estoque são as tábuas disponíveis no seu fornecedor — as dimens
 
 A lista de estoque é salva junto com seu arquivo do Blender. Você a monta uma vez para um fornecedor específico e a reutiliza em outros projetos. Também pode exportá-la em CSV para backup ou para compartilhar com colegas.
 
-### O otimizador de corte — como funciona em termos simples
+### <a id="help-planning-pt"></a>O otimizador de corte — como funciona em termos simples
 
 O otimizador responde a uma única pergunta: dadas as peças de que preciso e as tábuas disponíveis, qual é a forma mais eficiente de cortar?
 
@@ -1165,7 +1173,7 @@ Esse aviso existe porque desdobrar na serra de mesa é uma operação diferente 
 
 Definido em 0 (padrão), nenhuma verificação de capacidade é feita.
 
-### Importação JARCH Vis (PRO)
+### <a id="help-jarch-pt"></a>Importação JARCH Vis (PRO)
 
 JARCH Vis é um addon do Blender que cria revestimentos arquitetônicos — siding, pisos, forros de telhado em madeira — como objetos de malha única contendo muitas tábuas individuais. O CutVisor PRO pode dividir esses objetos em peças individuais mensuráveis automaticamente.
 
@@ -1181,7 +1189,7 @@ Essa medição é feita a partir da malha base, antes da avaliação dos modific
 
 Depois da importação, as peças aparecem em uma coleção dedicada do Blender, nomeada de acordo com o objeto original, prontas para atribuição de material e geração de Part ID.
 
-### Etiquetas na viewport
+### <a id="help-view-pt"></a>Etiquetas na viewport
 
 A aba View controla as etiquetas desenhadas diretamente na viewport 3D para qualquer objeto selecionado. Você pode mostrar qualquer combinação de Part ID, nome do objeto, dimensões e contagem de instâncias. As etiquetas são ancoradas em relação ao painel N (barra lateral direita) ou ao painel T (barra de ferramentas esquerda) — não à borda da tela — então nunca se sobrepõem ao painel do CutVisor nem a nenhum outro painel do Blender, mesmo que você os redimensione.
 
@@ -1239,7 +1247,7 @@ Ambos os arquivos são salvos como texto UTF-8 com uma marca de ordem de bytes (
 
 Essas não são lacunas esquecidas. Elas definem o limite do que o CutVisor promete fazer bem, que é a única coisa que ele realmente faz: dizer que madeira comprar e como cortá-la.
 
-## Ativação — Core e Pro
+## <a id="help-settings-pt"></a>Ativação — Core e Pro
 
 O CutVisor é distribuído como um único addon. Instalado sem chave de licença, ele funciona em modo Core. Inserir uma chave Pro válida em **Settings → Enter / Change Key** desbloqueia todos os recursos Pro instantaneamente — sem precisar reiniciar.
 
