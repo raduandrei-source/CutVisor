@@ -1,6 +1,71 @@
+<script>
+// theme before paint: the saved choice, otherwise dark (the docs default)
+(function () { var t = null; try { t = localStorage.getItem("cv-theme"); } catch (e) {} if (t !== "light" && t !== "dark") t = "dark"; document.documentElement.setAttribute("data-theme", t); })();
+</script>
 <style>
+/* colour tokens — light and dark (toggle: moon/sun button, top right) */
+:root {
+  --cv-bg: #ffffff;
+  --cv-ink: #24292f;
+  --cv-muted: #57606a;
+  --cv-line: #d0d7de;
+  --cv-link: #0969da;
+  --cv-surface: #f6f8fa;
+  --cv-purple: #8250df;
+  --cv-badge-ink: #ffffff;
+}
+html[data-theme="dark"] {
+  --cv-bg: #0d1117;
+  --cv-ink: #e6edf3;
+  --cv-muted: #9198a1;
+  --cv-line: #30363d;
+  --cv-link: #4493f8;
+  --cv-surface: #161b22;
+  --cv-purple: #ab7df8;
+  --cv-badge-ink: #0d1117;
+  color-scheme: dark;
+}
+html, body { background: var(--cv-bg); }
+body, .markdown-body { color: var(--cv-ink); }
+.markdown-body a { color: var(--cv-link); }
+.markdown-body h1, .markdown-body h2 { border-bottom-color: var(--cv-line); }
+.markdown-body hr { background-color: var(--cv-line); }
+.markdown-body code, .markdown-body pre { background-color: var(--cv-surface); }
+.markdown-body blockquote { color: var(--cv-muted); border-left-color: var(--cv-line); }
+.markdown-body table th, .markdown-body table td { border-color: var(--cv-line); }
+.markdown-body table tr { background-color: var(--cv-bg); border-top-color: var(--cv-line); }
+.markdown-body table tr:nth-child(2n) { background-color: var(--cv-surface); }
+
+/* sidebar links keep their own colours (beat .markdown-body a) */
+#cv-toc a.cv-toc-h2 { color: var(--cv-ink); }
+#cv-toc a.cv-toc-h3 { color: var(--cv-muted); }
+#cv-toc a.cv-toc-h2:hover, #cv-toc a.cv-toc-h3:hover { color: var(--cv-link); }
+
+#cv-theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 200;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--cv-line);
+  border-radius: 50%;
+  background: var(--cv-bg);
+  color: var(--cv-ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+#cv-theme-toggle:hover { background: var(--cv-surface); }
+#cv-theme-toggle svg { width: 18px; height: 18px; }
+#cv-theme-toggle .icon-sun { display: none; }
+html[data-theme="dark"] #cv-theme-toggle .icon-sun { display: block; }
+html[data-theme="dark"] #cv-theme-toggle .icon-moon { display: none; }
+
 #cv-toc-root {
   position: fixed;
+  background: var(--cv-bg);
   top: 70px;
   left: 0;
   width: 250px;
@@ -8,12 +73,12 @@
   overflow-y: auto;
   font-size: 13px;
   line-height: 1.5;
-  border-right: 1px solid #d0d7de;
+  border-right: 1px solid var(--cv-line);
   z-index: 100;
 }
 #cv-lang-switch {
   padding: 0 18px 14px 18px;
-  border-bottom: 1px solid #d0d7de;
+  border-bottom: 1px solid var(--cv-line);
   margin-bottom: 10px;
 }
 #cv-lang-switch label {
@@ -21,22 +86,23 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #57606a;
+  color: var(--cv-muted);
   margin-bottom: 4px;
 }
 #cv-lang-select {
   width: 100%;
   font-size: 13px;
   padding: 4px 6px;
-  border: 1px solid #d0d7de;
+  border: 1px solid var(--cv-line);
   border-radius: 4px;
-  background: #fff;
+  background: var(--cv-bg);
+  color: var(--cv-ink);
 }
 #cv-toc { padding: 0 18px 30px 18px; }
 .cv-toc-item { margin-bottom: 2px; }
 .cv-toc-h2 {
   display: block;
-  color: #24292f;
+  color: var(--cv-ink);
   font-weight: 600;
   text-decoration: none;
   padding: 4px 0;
@@ -48,24 +114,24 @@
   position: absolute;
   left: 0;
   font-size: 10px;
-  color: #57606a;
+  color: var(--cv-muted);
   transition: transform 0.15s ease;
 }
 .cv-toc-item.open > .cv-toc-h2::before { transform: rotate(90deg); }
-.cv-toc-h2:hover { color: #0969da; }
+.cv-toc-h2:hover { color: var(--cv-link); }
 .cv-toc-children {
   padding-left: 14px;
-  border-left: 1px solid #d0d7de;
+  border-left: 1px solid var(--cv-line);
   margin-left: 4px;
 }
 .cv-toc-h3 {
   display: block;
-  color: #57606a;
+  color: var(--cv-muted);
   font-size: 12px;
   text-decoration: none;
   padding: 3px 0;
 }
-.cv-toc-h3:hover { color: #0969da; text-decoration: underline; }
+.cv-toc-h3:hover { color: var(--cv-link); text-decoration: underline; }
 
 .lang-block { display: none; }
 
@@ -73,7 +139,7 @@
 .cv-new {
   font-size: 0.55em;
   font-weight: 600;
-  color: #8250df;
+  color: var(--cv-purple);
   margin-left: 0.4em;
   vertical-align: middle;
   white-space: nowrap;
@@ -83,8 +149,8 @@
   margin-left: 6px;
   padding: 0 6px;
   border-radius: 8px;
-  background: #8250df;
-  color: #fff;
+  background: var(--cv-purple);
+  color: var(--cv-badge-ink);
   font-size: 9px;
   font-weight: 700;
   line-height: 15px;
@@ -93,8 +159,8 @@
 }
 .cv-new-badge.cv-new-inside {
   background: transparent;
-  color: #8250df;
-  box-shadow: inset 0 0 0 1px #8250df;
+  color: var(--cv-purple);
+  box-shadow: inset 0 0 0 1px var(--cv-purple);
 }
 
 @media (max-width: 1150px) {
@@ -121,6 +187,34 @@
   </div>
   <nav id="cv-toc"></nav>
 </div>
+
+<button id="cv-theme-toggle" type="button" title="Switch theme" aria-label="Switch theme">
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="8" height="8"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+</button>
+
+<script>
+(function () {
+  var KEY = "cv-theme";
+  var TITLES = { en: "Switch theme", fr: "Changer de thème", es: "Cambiar tema", pt: "Alternar tema" };
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("cv-theme-toggle");
+    var sel = document.getElementById("cv-lang-select");
+    function label() {
+      var t = TITLES[(sel && sel.value) || "en"] || TITLES.en;
+      btn.title = t;
+      btn.setAttribute("aria-label", t);
+    }
+    btn.addEventListener("click", function () {
+      var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+    });
+    if (sel) sel.addEventListener("change", label);
+    label();
+  });
+})();
+</script>
 
 <script>
 (function () {
