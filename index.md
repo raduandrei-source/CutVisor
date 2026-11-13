@@ -188,17 +188,18 @@ html[data-theme="dark"] #cv-theme-toggle .icon-moon { display: none; }
   <nav id="cv-toc"></nav>
 </div>
 
-<button id="cv-theme-toggle" type="button" title="Switch theme" aria-label="Switch theme">
-  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
-  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="8" height="8"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
-</button>
-
 <script>
 (function () {
   var KEY = "cv-theme";
   var TITLES = { en: "Switch theme", fr: "Changer de thème", es: "Cambiar tema", pt: "Alternar tema" };
   document.addEventListener("DOMContentLoaded", function () {
-    var btn = document.getElementById("cv-theme-toggle");
+    // built here, not as page markup: kramdown would break a <button> holding <svg>
+    var btn = document.createElement("button");
+    btn.id = "cv-theme-toggle";
+    btn.type = "button";
+    btn.innerHTML = '<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>' +
+      '<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="8" height="8"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>';
+    document.body.appendChild(btn);
     var sel = document.getElementById("cv-lang-select");
     function label() {
       var t = TITLES[(sel && sel.value) || "en"] || TITLES.en;
