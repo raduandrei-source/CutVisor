@@ -100,7 +100,7 @@ CutVisor reads instance counts and dimensions from:
 
 ## Compatibility
 
-- Blender **4.0 and newer**, including **5.x** (v1.0.2 tested on 4.1 – 5.3)
+- Blender **4.0 and newer**, including **5.x** (v1.0.3 tested on 4.1 – 5.3)
 - Windows, macOS, Linux
 - Metric and Imperial units
 
@@ -130,6 +130,10 @@ cutvisor/
 ---
 
 ## Changelog
+
+### v1.0.3
+- Fixed: in the Shopping List report, the expand arrows of the material groups and of the boards took half of the row, so the board fill bar and the waste % were cut off. The arrows are now small icons and every row shows its full information again.
+- Changed: the add-on description in Preferences now points to the gear menu (License) for the Pro key.
 
 ### v1.0.2
 - New: **Finishes** tab — paint, primer and treatment quantities from the 3D model
