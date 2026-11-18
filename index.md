@@ -133,6 +133,15 @@ html[data-theme="dark"] #cv-theme-toggle .icon-moon { display: none; }
 }
 .cv-toc-h3:hover { color: var(--cv-link); text-decoration: underline; }
 
+/* help screenshots (img/) — panel shots at half size, click for full size */
+figure.cv-shot { margin: 18px 0 22px 0; }
+figure.cv-shot img { width: 400px; max-width: 100%; height: auto; display: block;
+                     border-radius: 8px; border: 1px solid var(--cv-line); }
+figure.cv-shot.cv-wide img { width: 100%; }
+figure.cv-shot figcaption { font-size: 13.5px; color: var(--cv-muted); margin-top: 6px;
+                            max-width: 400px; line-height: 1.45; }
+figure.cv-shot.cv-wide figcaption { max-width: none; }
+
 .lang-block { display: none; }
 
 /* NEW markers — set per release by the cutvisor-lansare skill (mark_new.py) */
@@ -390,6 +399,8 @@ You work with wood regularly — furniture, objects, installations. You've devel
 
 Most real imports aren't clean. A model brought in from Rhino, SketchUp or IFC typically lands as one large collection containing not just the timber pieces but every screw, bolt, and bracket modelled along with them — sometimes hundreds of small objects mixed in with the boards you actually want to cut. Sorting these out by hand, one click at a time, doesn't scale.
 
+<figure class="cv-shot"><a href="img/tab-parts.png"><img src="img/tab-parts.png" alt="Parts tab: the Volume Filter with a screw selected (10.24 cm³), above Generate Part IDs and the list of components."></a><figcaption>Parts tab: the Volume Filter with a screw selected (10.24 cm³), above Generate Part IDs and the list of components.</figcaption></figure>
+
 The Volume Filter gives you a fast way to separate the two by size, since hardware is reliably tiny compared to timber:
 
 **Active object volume** is shown live, with no button to click — select anything in the viewport and its volume reads directly in cm³. Select a screw to see what you're dealing with, select a board to compare.
@@ -405,6 +416,8 @@ None of this requires a material to be assigned first — volume is read directl
 ### <a id="help-materials-en"></a>Materials and pricing
 
 **Material** in CutVisor means a wood species with its physical properties: density (how heavy it is per cubic metre) and price (how much it costs per unit). You can price by kilogram, by cubic metre, or by piece — whichever matches how your supplier invoices.
+
+<figure class="cv-shot"><a href="img/tab-materials.png"><img src="img/tab-materials.png" alt="Materials tab: a material with its species, density and price, and below it the stock sizes the supplier sells."></a><figcaption>Materials tab: a material with its species, density and price, and below it the stock sizes the supplier sells.</figcaption></figure>
 
 **Density** is used for two things: calculating the mass of each piece (useful for structural checks and logistics) and calculating cost when you price by weight. Built-in presets cover the most common species. If you work with a species not in the list, you enter the density manually — it's the dry density of the wood, available from any timber supplier's data sheet or the EN 338 standard for structural timber.
 
@@ -424,6 +437,8 @@ The stock list is saved with your Blender file. You build it once for a given su
 
 The optimizer answers one question: given the pieces I need and the boards available, what's the most efficient way to cut?
 
+<figure class="cv-shot"><a href="img/tab-planning.png"><img src="img/tab-planning.png" alt="Planning tab: volume and mass, BOM export, the cut optimizer settings and the manual hardware list."></a><figcaption>Planning tab: volume and mass, BOM export, the cut optimizer settings and the manual hardware list.</figcaption></figure>
+
 It works in three steps:
 
 **Step 1 — Group by profile.** All pieces that share the same width and thickness go into the same group. A 700mm piece and a 750mm piece both at 150×40mm are in the same group and will be cut from the same boards. A 700mm piece at 150×40mm and a 700mm piece at 100×50mm are in different groups — you can't cut one from the other.
@@ -433,6 +448,8 @@ It works in three steps:
 **Step 3 — Fill boards.** Each piece is placed in the first open board that has enough remaining length. If no open board fits, a new board is opened. When choosing which stock length to open, the optimizer simulates all available lengths and picks the one that will pack the most material — not necessarily the shortest, and not necessarily the longest.
 
 The result is a cut plan: which pieces go into which board, in what order, with the waste at the end of each board clearly shown.
+
+<figure class="cv-shot"><a href="img/shopping-list.png"><img src="img/shopping-list.png" alt="After Generate Shopping List: one row per profile with boards, waste and cost; a board opened to its pieces, one of them identified in the viewport."></a><figcaption>After Generate Shopping List: one row per profile with boards, waste and cost; a board opened to its pieces, one of them identified in the viewport.</figcaption></figure>
 
 ### Kerf
 
@@ -484,6 +501,8 @@ Set to 0 (the default), no capacity check is performed.
 
 JARCH Vis is a Blender addon that creates architectural cladding — siding, floors, roof boarding — as single mesh objects containing many individual boards. CutVisor PRO can split these objects into individual measurable pieces automatically.
 
+<figure class="cv-shot"><a href="img/tab-jarch.png"><img src="img/tab-jarch.png" alt="JARCH Import tab (Pro): the import settings and the report of the last import."></a><figcaption>JARCH Import tab (Pro): the import settings and the report of the last import.</figcaption></figure>
+
 The import process handles several problems that arise from how JARCH creates geometry:
 
 **Stray faces from boolean cuts.** When siding is trimmed around windows or doors, boolean operations sometimes leave behind isolated 2D faces — flat geometry with no volume. CutVisor detects these (by thickness and planarity) and removes them before counting.
@@ -500,9 +519,13 @@ After import, pieces appear in a dedicated Blender collection named after the or
 
 The View tab controls labels drawn directly in the 3D viewport for any selected object. You can show any combination of Part ID, object name, dimensions and instance count. Labels are anchored relative to the N-panel (right sidebar) or T-panel (left toolbar) — not to the screen edge — so they never overlap with the CutVisor panel or any other Blender panel, even if you resize them.
 
+<figure class="cv-shot"><a href="img/tab-view.png"><img src="img/tab-view.png" alt="View tab: the four presets, what the labels show, and the text style."></a><figcaption>View tab: the four presets, what the labels show, and the text style.</figcaption></figure>
+
 Shadow and outline options make labels readable over any background colour. Four one-click presets (All, IDs only, Dims+Count, Off) let you switch between information modes quickly during a work session.
 
 All overlay settings update the viewport instantly when changed — no need to move the camera to trigger a refresh.
+
+<figure class="cv-shot cv-wide"><a href="img/viewport-labels.png"><img src="img/viewport-labels.png" alt="The labels in the viewport, one line per selected object: Part ID, name, dimensions and count (×6 for the arrayed rafter)."></a><figcaption>The labels in the viewport, one line per selected object: Part ID, name, dimensions and count (×6 for the arrayed rafter).</figcaption></figure>
 
 ### The export folder
 
@@ -548,6 +571,8 @@ After generating a shopping list, **Export Cut Sheets** (Planning tab, next to E
 
 A DXF R12 file with the same content is written next to the SVG, for CNC and panel saws that import cut lists. Both files go into the export folder, and nothing is generated until you click the button.
 
+<figure class="cv-shot cv-wide"><a href="img/cut-sheet.png"><img src="img/cut-sheet.png" alt="Part of a cut sheet (SVG): each board drawn to scale, pieces in cutting order with numbered cuts, the leftover hatched."></a><figcaption>Part of a cut sheet (SVG): each board drawn to scale, pieces in cutting order with numbered cuts, the leftover hatched.</figcaption></figure>
+
 ### Identify mode <span class="cv-new" data-v="1.0.2">(new)</span>
 
 In the Planning report, every board can be expanded (▶) to list its pieces. Click a piece — or a row in the Unmatched section — and CutVisor selects that object in the viewport and shows one small label on it (Part ID · length). Shift-click adds to the selection. The label disappears by itself as soon as the object is deselected or hidden, so the viewport never fills up with text.
@@ -565,6 +590,8 @@ Two small buttons sit on the right of the CutVisor panel header. **?** opens thi
 A timber structure is rarely finished when it is cut. It gets a biocide against insects and fungi, sometimes a fire retardant, a primer, and paint, stain or varnish — and every one of these is bought in cans, with a consumption that depends on the wood. The **Finishes** tab turns the 3D model into those quantities.
 
 The area to finish is available in Core. Everything else in this chapter is a Pro feature.
+
+<figure class="cv-shot"><a href="img/tab-finishes.png"><img src="img/tab-finishes.png" alt="Finishes tab (Pro): a finish system with its steps in order — biocide, fire retardant, primer, paint."></a><figcaption>Finishes tab (Pro): a finish system with its steps in order — biocide, fire retardant, primer, paint.</figcaption></figure>
 
 ### Area to finish (Core)
 
@@ -619,6 +646,8 @@ These are not afterthoughts. They define the boundary of what CutVisor promises 
 ## <a id="help-settings-en"></a>Activation — Core and Pro
 
 CutVisor is distributed as a single add-on package. When installed without a licence key, it runs in Core mode. Entering a valid Pro key in the **gear menu (⚙) → Enter key** unlocks all Pro features instantly — no restart required.
+
+<figure class="cv-shot"><a href="img/settings-menu.png"><img src="img/settings-menu.png" alt="The gear menu (⚙): language, scene units and licence. Without a key it reads Core, with Paste key and Enter key."></a><figcaption>The gear menu (⚙): language, scene units and licence. Without a key it reads Core, with Paste key and Enter key.</figcaption></figure>
 
 The licence key has the format `CWTW-XXXX-XXXX-XXXX-XXXX`. It is validated locally using a cryptographic signature — no internet connection is required for activation or for continued use.
 
@@ -732,6 +761,8 @@ Vous travaillez régulièrement le bois — meubles, objets, installations. Vous
 
 La plupart des imports réels ne sont pas propres. Un modèle importé depuis Rhino, SketchUp ou IFC arrive généralement comme une grande collection contenant non seulement les pièces en bois mais aussi chaque vis, boulon et équerre modélisés avec elles — parfois des centaines de petits objets mélangés aux planches que vous voulez réellement couper. Les trier à la main, un clic à la fois, ne tient pas à l'échelle.
 
+<figure class="cv-shot"><a href="img/tab-parts.png"><img src="img/tab-parts.png" alt="Onglet Parts : le filtre de volume avec une vis sélectionnée (10,24 cm³), au-dessus de Generate Part IDs et de la liste des composants."></a><figcaption>Onglet Parts : le filtre de volume avec une vis sélectionnée (10,24 cm³), au-dessus de Generate Part IDs et de la liste des composants.</figcaption></figure>
+
 Le Filtre de volume vous donne un moyen rapide de séparer les deux par taille, puisque la quincaillerie est toujours minuscule comparée au bois :
 
 **Le volume de l'objet actif** s'affiche en direct, sans bouton à cliquer — sélectionnez n'importe quoi dans la vue 3D et son volume s'affiche directement en cm³. Sélectionnez une vis pour voir à quoi vous avez affaire, sélectionnez une planche pour comparer.
@@ -747,6 +778,8 @@ Rien de tout cela ne nécessite qu'un matériau soit déjà assigné — le volu
 ### <a id="help-materials-fr"></a>Matériaux et tarification
 
 Un **Matériau** dans CutVisor désigne une essence de bois avec ses propriétés physiques : densité (son poids par mètre cube) et prix (son coût par unité). Vous pouvez tarifer au kilogramme, au mètre cube, ou à la pièce — selon la façon dont votre fournisseur facture.
+
+<figure class="cv-shot"><a href="img/tab-materials.png"><img src="img/tab-materials.png" alt="Onglet Materials : un matériau avec son essence, sa densité et son prix, et en dessous les tailles de stock vendues par le fournisseur."></a><figcaption>Onglet Materials : un matériau avec son essence, sa densité et son prix, et en dessous les tailles de stock vendues par le fournisseur.</figcaption></figure>
 
 La **densité** sert à deux choses : calculer la masse de chaque pièce (utile pour les vérifications structurelles et la logistique) et calculer le coût quand vous tarifez au poids. Des préréglages intégrés couvrent les essences les plus courantes. Si vous travaillez avec une essence absente de la liste, vous saisissez la densité manuellement — c'est la densité sèche du bois, disponible sur la fiche technique de tout fournisseur de bois ou dans la norme EN 338 pour le bois de structure.
 
@@ -766,6 +799,8 @@ La liste de stock est enregistrée avec votre fichier Blender. Vous la construis
 
 L'optimiseur répond à une seule question : étant donné les pièces dont j'ai besoin et les planches disponibles, quelle est la façon la plus efficace de couper ?
 
+<figure class="cv-shot"><a href="img/tab-planning.png"><img src="img/tab-planning.png" alt="Onglet Planning : volume et masse, export des bordereaux, réglages de l'optimiseur de coupe et liste de quincaillerie manuelle."></a><figcaption>Onglet Planning : volume et masse, export des bordereaux, réglages de l'optimiseur de coupe et liste de quincaillerie manuelle.</figcaption></figure>
+
 Il procède en trois étapes :
 
 **Étape 1 — Grouper par profil.** Toutes les pièces qui partagent la même largeur et épaisseur vont dans le même groupe. Une pièce de 700mm et une de 750mm, toutes deux en 150×40mm, sont dans le même groupe et seront coupées dans les mêmes planches. Une pièce de 700mm en 150×40mm et une pièce de 700mm en 100×50mm sont dans des groupes différents — on ne peut pas couper l'une dans l'autre.
@@ -775,6 +810,8 @@ Il procède en trois étapes :
 **Étape 3 — Remplir les planches.** Chaque pièce est placée dans la première planche ouverte ayant suffisamment de longueur restante. Si aucune planche ouverte ne convient, une nouvelle est ouverte. Pour choisir quelle longueur de stock ouvrir, l'optimiseur simule toutes les longueurs disponibles et choisit celle qui permettra d'utiliser le plus de matière — pas nécessairement la plus courte, ni nécessairement la plus longue.
 
 Le résultat est un plan de coupe : quelles pièces vont dans quelle planche, dans quel ordre, avec la chute en fin de chaque planche clairement indiquée.
+
+<figure class="cv-shot"><a href="img/shopping-list.png"><img src="img/shopping-list.png" alt="Après Generate Shopping List : une ligne par profil avec planches, chute et coût ; une planche ouverte sur ses pièces, dont l'une est identifiée dans la vue 3D."></a><figcaption>Après Generate Shopping List : une ligne par profil avec planches, chute et coût ; une planche ouverte sur ses pièces, dont l'une est identifiée dans la vue 3D.</figcaption></figure>
 
 ### Trait de scie (Kerf)
 
@@ -826,6 +863,8 @@ Réglé à 0 (valeur par défaut), aucune vérification de capacité n'est effec
 
 JARCH Vis est une extension Blender qui crée des revêtements architecturaux — bardage, planchers, toitures en bois — sous forme d'objets mesh uniques contenant de nombreuses planches individuelles. CutVisor PRO peut diviser automatiquement ces objets en pièces individuelles mesurables.
 
+<figure class="cv-shot"><a href="img/tab-jarch.png"><img src="img/tab-jarch.png" alt="Onglet JARCH Import (Pro) : les réglages d'import et le rapport du dernier import."></a><figcaption>Onglet JARCH Import (Pro) : les réglages d'import et le rapport du dernier import.</figcaption></figure>
+
 Le processus d'import gère plusieurs problèmes propres à la façon dont JARCH crée la géométrie :
 
 **Faces parasites issues de découpes booléennes.** Quand un bardage est découpé autour de fenêtres ou de portes, les opérations booléennes laissent parfois des faces 2D isolées — une géométrie plate sans volume. CutVisor les détecte (par épaisseur et planéité) et les supprime avant le comptage.
@@ -842,9 +881,13 @@ Après l'import, les pièces apparaissent dans une collection Blender dédiée, 
 
 L'onglet View contrôle les étiquettes dessinées directement dans la vue 3D pour tout objet sélectionné. Vous pouvez afficher n'importe quelle combinaison de Part ID, nom de l'objet, dimensions et nombre d'instances. Les étiquettes sont ancrées par rapport au panneau N (barre latérale droite) ou au panneau T (barre d'outils gauche) — pas au bord de l'écran — donc elles ne se superposent jamais au panneau CutVisor ni à aucun autre panneau Blender, même si vous les redimensionnez.
 
+<figure class="cv-shot"><a href="img/tab-view.png"><img src="img/tab-view.png" alt="Onglet View : les quatre préréglages, ce qu'affichent les étiquettes et le style du texte."></a><figcaption>Onglet View : les quatre préréglages, ce qu'affichent les étiquettes et le style du texte.</figcaption></figure>
+
 Les options d'ombre et de contour rendent les étiquettes lisibles sur n'importe quel arrière-plan. Quatre préréglages en un clic (All, IDs only, Dims+Count, Off) permettent de changer rapidement de mode d'information pendant une session de travail.
 
 Tous les réglages d'affichage se mettent à jour instantanément dans la vue 3D dès qu'ils sont modifiés — pas besoin de déplacer la caméra pour déclencher un rafraîchissement.
+
+<figure class="cv-shot cv-wide"><a href="img/viewport-labels.png"><img src="img/viewport-labels.png" alt="Les étiquettes dans la vue 3D, une ligne par objet sélectionné : Part ID, nom, dimensions et nombre (×6 pour le chevron en réseau)."></a><figcaption>Les étiquettes dans la vue 3D, une ligne par objet sélectionné : Part ID, nom, dimensions et nombre (×6 pour le chevron en réseau).</figcaption></figure>
 
 ### Le dossier d'export
 
@@ -890,6 +933,8 @@ Après avoir généré une liste d'achats, **Exporter les plans de coupe** (ongl
 
 Un fichier DXF R12 au même contenu est écrit à côté du SVG, pour les machines CNC et les scies à panneaux qui importent des listes de coupe. Les deux fichiers vont dans le dossier d'export, et rien n'est généré tant que vous ne cliquez pas sur le bouton.
 
+<figure class="cv-shot cv-wide"><a href="img/cut-sheet.png"><img src="img/cut-sheet.png" alt="Extrait d'un plan de coupe (SVG) : chaque planche à l'échelle, les pièces dans l'ordre de coupe avec les coupes numérotées, la chute hachurée."></a><figcaption>Extrait d'un plan de coupe (SVG) : chaque planche à l'échelle, les pièces dans l'ordre de coupe avec les coupes numérotées, la chute hachurée.</figcaption></figure>
+
 ### Mode identification <span class="cv-new" data-v="1.0.2">(nouveau)</span>
 
 Dans le rapport de planification, chaque planche peut être dépliée (▶) pour lister ses pièces. Cliquez sur une pièce — ou sur une ligne de la section des pièces non associées — et CutVisor sélectionne l'objet dans la vue 3D et y affiche une seule petite étiquette (ID de pièce · longueur). Maj-clic ajoute à la sélection. L'étiquette disparaît d'elle-même dès que l'objet est désélectionné ou masqué, la vue 3D ne se remplit donc jamais de texte.
@@ -907,6 +952,8 @@ Deux petits boutons se trouvent à droite de l'en-tête du panneau CutVisor. **?
 Une structure en bois est rarement terminée une fois coupée. Elle reçoit un biocide contre les insectes et les champignons, parfois un ignifuge, un primaire, puis une peinture, une lasure ou un vernis — et chacun de ces produits s'achète en pots, avec une consommation qui dépend du bois. L'onglet **Finitions** transforme le modèle 3D en ces quantités.
 
 La surface à traiter est disponible en Core. Tout le reste de ce chapitre est une fonctionnalité Pro.
+
+<figure class="cv-shot"><a href="img/tab-finishes.png"><img src="img/tab-finishes.png" alt="Onglet Finitions (Pro) : un système de finition avec ses étapes dans l'ordre — biocide, ignifuge, primaire, peinture."></a><figcaption>Onglet Finitions (Pro) : un système de finition avec ses étapes dans l'ordre — biocide, ignifuge, primaire, peinture.</figcaption></figure>
 
 ### Surface à traiter (Core)
 
@@ -961,6 +1008,8 @@ Ce ne sont pas des oublis. Ils définissent les limites de ce que CutVisor prome
 ## <a id="help-settings-fr"></a>Activation — Core et Pro
 
 CutVisor est distribué comme une extension unique. Installée sans clé de licence, elle fonctionne en mode Core. Saisir une clé Pro valide dans le **menu roue dentée (⚙) → Saisir la clé** débloque toutes les fonctionnalités Pro instantanément — aucun redémarrage requis.
+
+<figure class="cv-shot"><a href="img/settings-menu.png"><img src="img/settings-menu.png" alt="Le menu roue dentée (⚙) : langue, unités de la scène et licence. Sans clé, il indique Core, avec Paste key et Enter key."></a><figcaption>Le menu roue dentée (⚙) : langue, unités de la scène et licence. Sans clé, il indique Core, avec Paste key et Enter key.</figcaption></figure>
 
 La clé de licence a le format `CWTW-XXXX-XXXX-XXXX-XXXX`. Elle est validée localement via une signature cryptographique — aucune connexion internet n'est nécessaire pour l'activation ou l'utilisation continue.
 
@@ -1074,6 +1123,8 @@ Trabajas la madera con regularidad — muebles, objetos, instalaciones. Has desa
 
 La mayoría de las importaciones reales no están limpias. Un modelo importado desde Rhino, SketchUp o IFC suele llegar como una gran colección que contiene no solo las piezas de madera sino también cada tornillo, perno y escuadra modelados junto con ellas — a veces cientos de objetos pequeños mezclados con los tablones que realmente quieres cortar. Separarlos a mano, clic a clic, no es viable a esa escala.
 
+<figure class="cv-shot"><a href="img/tab-parts.png"><img src="img/tab-parts.png" alt="Pestaña Parts: el filtro de volumen con un tornillo seleccionado (10,24 cm³), sobre Generate Part IDs y la lista de componentes."></a><figcaption>Pestaña Parts: el filtro de volumen con un tornillo seleccionado (10,24 cm³), sobre Generate Part IDs y la lista de componentes.</figcaption></figure>
+
 El Filtro de volumen te da una forma rápida de separar ambos por tamaño, ya que la ferretería siempre es minúscula comparada con la madera:
 
 **El volumen del objeto activo** se muestra en directo, sin botón que pulsar — selecciona cualquier cosa en el visor y su volumen se lee directamente en cm³. Selecciona un tornillo para ver con qué estás tratando, selecciona un tablón para comparar.
@@ -1089,6 +1140,8 @@ Nada de esto requiere que haya un material asignado primero — el volumen se le
 ### <a id="help-materials-es"></a>Materiales y precios
 
 Un **Material** en CutVisor es una especie de madera con sus propiedades físicas: densidad (cuánto pesa por metro cúbico) y precio (cuánto cuesta por unidad). Puedes fijar el precio por kilogramo, por metro cúbico, o por pieza — lo que coincida con cómo factura tu proveedor.
+
+<figure class="cv-shot"><a href="img/tab-materials.png"><img src="img/tab-materials.png" alt="Pestaña Materials: un material con su especie, densidad y precio, y debajo los tamaños de stock que vende el proveedor."></a><figcaption>Pestaña Materials: un material con su especie, densidad y precio, y debajo los tamaños de stock que vende el proveedor.</figcaption></figure>
 
 La **densidad** se usa para dos cosas: calcular la masa de cada pieza (útil para comprobaciones estructurales y logística) y calcular el coste cuando fijas el precio por peso. Hay preajustes integrados para las especies más comunes. Si trabajas con una especie que no está en la lista, introduces la densidad manualmente — es la densidad seca de la madera, disponible en la ficha técnica de cualquier proveedor o en la norma EN 338 para madera estructural.
 
@@ -1108,6 +1161,8 @@ La lista de stock se guarda con tu archivo de Blender. La construyes una vez par
 
 El optimizador responde a una sola pregunta: dadas las piezas que necesito y los tablones disponibles, ¿cuál es la forma más eficiente de cortar?
 
+<figure class="cv-shot"><a href="img/tab-planning.png"><img src="img/tab-planning.png" alt="Pestaña Planning: volumen y masa, exportación de listados, ajustes del optimizador de corte y lista manual de herrajes."></a><figcaption>Pestaña Planning: volumen y masa, exportación de listados, ajustes del optimizador de corte y lista manual de herrajes.</figcaption></figure>
+
 Funciona en tres pasos:
 
 **Paso 1 — Agrupar por perfil.** Todas las piezas que compartan el mismo ancho y espesor van al mismo grupo. Una pieza de 700mm y otra de 750mm, ambas en 150×40mm, están en el mismo grupo y se cortarán de los mismos tablones. Una pieza de 700mm en 150×40mm y una pieza de 700mm en 100×50mm están en grupos distintos — no se puede cortar una de la otra.
@@ -1117,6 +1172,8 @@ Funciona en tres pasos:
 **Paso 3 — Llenar los tablones.** Cada pieza se coloca en el primer tablón abierto que tenga suficiente longitud restante. Si ningún tablón abierto se ajusta, se abre uno nuevo. Para elegir qué longitud de stock abrir, el optimizador simula todas las longitudes disponibles y elige la que aprovechará más material — no necesariamente la más corta, ni necesariamente la más larga.
 
 El resultado es un plan de corte: qué piezas van en qué tablón, en qué orden, con el desperdicio al final de cada tablón claramente indicado.
+
+<figure class="cv-shot"><a href="img/shopping-list.png"><img src="img/shopping-list.png" alt="Tras Generate Shopping List: una fila por perfil con tablas, desperdicio y coste; una tabla abierta con sus piezas, una de ellas identificada en el visor 3D."></a><figcaption>Tras Generate Shopping List: una fila por perfil con tablas, desperdicio y coste; una tabla abierta con sus piezas, una de ellas identificada en el visor 3D.</figcaption></figure>
 
 ### Corte de sierra (Kerf)
 
@@ -1168,6 +1225,8 @@ Fijado en 0 (valor por defecto), no se realiza ninguna comprobación de capacida
 
 JARCH Vis es un complemento de Blender que crea revestimientos arquitectónicos — tablazón, suelos, cubiertas de madera — como objetos de malla única que contienen muchos tablones individuales. CutVisor PRO puede dividir estos objetos en piezas individuales medibles automáticamente.
 
+<figure class="cv-shot"><a href="img/tab-jarch.png"><img src="img/tab-jarch.png" alt="Pestaña JARCH Import (Pro): los ajustes de importación y el informe de la última importación."></a><figcaption>Pestaña JARCH Import (Pro): los ajustes de importación y el informe de la última importación.</figcaption></figure>
+
 El proceso de importación gestiona varios problemas propios de cómo JARCH crea la geometría:
 
 **Caras espurias de cortes booleanos.** Cuando un revestimiento se recorta alrededor de ventanas o puertas, las operaciones booleanas a veces dejan caras 2D aisladas — geometría plana sin volumen. CutVisor las detecta (por espesor y planaridad) y las elimina antes de contar.
@@ -1184,9 +1243,13 @@ Tras la importación, las piezas aparecen en una colección de Blender dedicada,
 
 La pestaña View controla las etiquetas dibujadas directamente en el visor 3D para cualquier objeto seleccionado. Puedes mostrar cualquier combinación de Part ID, nombre del objeto, dimensiones y número de instancias. Las etiquetas se anclan en relación con el panel N (barra lateral derecha) o el panel T (barra de herramientas izquierda) — no al borde de la pantalla — así que nunca se solapan con el panel de CutVisor ni con ningún otro panel de Blender, aunque los redimensiones.
 
+<figure class="cv-shot"><a href="img/tab-view.png"><img src="img/tab-view.png" alt="Pestaña View: los cuatro preajustes, lo que muestran las etiquetas y el estilo del texto."></a><figcaption>Pestaña View: los cuatro preajustes, lo que muestran las etiquetas y el estilo del texto.</figcaption></figure>
+
 Las opciones de sombra y contorno hacen que las etiquetas sean legibles sobre cualquier color de fondo. Cuatro preajustes de un clic (All, IDs only, Dims+Count, Off) permiten cambiar rápidamente entre modos de información durante una sesión de trabajo.
 
 Todos los ajustes de superposición se actualizan al instante en el visor cuando se modifican — no es necesario mover la cámara para forzar un refresco.
+
+<figure class="cv-shot cv-wide"><a href="img/viewport-labels.png"><img src="img/viewport-labels.png" alt="Las etiquetas en el visor 3D, una línea por objeto seleccionado: Part ID, nombre, dimensiones y cantidad (×6 para el cabio con Array)."></a><figcaption>Las etiquetas en el visor 3D, una línea por objeto seleccionado: Part ID, nombre, dimensiones y cantidad (×6 para el cabio con Array).</figcaption></figure>
 
 ### La carpeta de exportación
 
@@ -1232,6 +1295,8 @@ Después de generar una lista de compras, **Exportar planos de corte** (pestaña
 
 Junto al SVG se escribe un archivo DXF R12 con el mismo contenido, para máquinas CNC y seccionadoras que importan listas de corte. Ambos archivos van a la carpeta de exportación y no se genera nada hasta que pulsas el botón.
 
+<figure class="cv-shot cv-wide"><a href="img/cut-sheet.png"><img src="img/cut-sheet.png" alt="Parte de un plano de corte (SVG): cada tabla a escala, las piezas en orden de corte con los cortes numerados y el sobrante rayado."></a><figcaption>Parte de un plano de corte (SVG): cada tabla a escala, las piezas en orden de corte con los cortes numerados y el sobrante rayado.</figcaption></figure>
+
 ### Modo identificación <span class="cv-new" data-v="1.0.2">(nuevo)</span>
 
 En el informe de Planificación, cada tablón puede desplegarse (▶) para listar sus piezas. Haz clic en una pieza — o en una fila de la sección de piezas sin correspondencia — y CutVisor selecciona ese objeto en el visor y muestra sobre él una sola etiqueta pequeña (ID de pieza · longitud). Mayús-clic añade a la selección. La etiqueta desaparece sola en cuanto el objeto se deselecciona u oculta, así que el visor nunca se llena de texto.
@@ -1249,6 +1314,8 @@ A la derecha de la cabecera del panel CutVisor hay dos botones pequeños. **?** 
 Una estructura de madera rara vez está terminada cuando se corta. Recibe un biocida contra insectos y hongos, a veces un ignífugo, una imprimación y una pintura, lasur o barniz — y cada uno de estos productos se compra en botes, con un consumo que depende de la madera. La pestaña **Acabados** convierte el modelo 3D en esas cantidades.
 
 La superficie a tratar está disponible en Core. Todo lo demás de este capítulo es una función Pro.
+
+<figure class="cv-shot"><a href="img/tab-finishes.png"><img src="img/tab-finishes.png" alt="Pestaña Acabados (Pro): un sistema de acabado con sus pasos en orden — biocida, ignífugo, imprimación, pintura."></a><figcaption>Pestaña Acabados (Pro): un sistema de acabado con sus pasos en orden — biocida, ignífugo, imprimación, pintura.</figcaption></figure>
 
 ### Superficie a tratar (Core)
 
@@ -1303,6 +1370,8 @@ Estas no son omisiones casuales. Definen el límite de lo que CutVisor promete h
 ## <a id="help-settings-es"></a>Activación — Core y Pro
 
 CutVisor se distribuye como un único complemento. Instalado sin clave de licencia, funciona en modo Core. Introducir una clave Pro válida en el **menú de la rueda dentada (⚙) → Introducir clave** desbloquea todas las funciones Pro al instante — sin necesidad de reiniciar.
+
+<figure class="cv-shot"><a href="img/settings-menu.png"><img src="img/settings-menu.png" alt="El menú de la rueda dentada (⚙): idioma, unidades de la escena y licencia. Sin clave indica Core, con Paste key y Enter key."></a><figcaption>El menú de la rueda dentada (⚙): idioma, unidades de la escena y licencia. Sin clave indica Core, con Paste key y Enter key.</figcaption></figure>
 
 La clave de licencia tiene el formato `CWTW-XXXX-XXXX-XXXX-XXXX`. Se valida localmente mediante una firma criptográfica — no se requiere conexión a internet para la activación ni para el uso continuado.
 
@@ -1416,6 +1485,8 @@ Você trabalha com madeira regularmente — móveis, objetos, instalações. Des
 
 A maioria das importações reais não vem limpa. Um modelo importado do Rhino, SketchUp ou IFC geralmente chega como uma grande coleção contendo não só as peças de madeira, mas também todo parafuso, cavilha e suporte modelados junto com elas — às vezes centenas de objetos pequenos misturados com as tábuas que você realmente quer cortar. Separá-los manualmente, um clique por vez, não escala.
 
+<figure class="cv-shot"><a href="img/tab-parts.png"><img src="img/tab-parts.png" alt="Aba Parts: o filtro de volume com um parafuso selecionado (10,24 cm³), acima de Generate Part IDs e da lista de componentes."></a><figcaption>Aba Parts: o filtro de volume com um parafuso selecionado (10,24 cm³), acima de Generate Part IDs e da lista de componentes.</figcaption></figure>
+
 O Filtro de volume oferece uma forma rápida de separar os dois por tamanho, já que ferragens são sempre minúsculas comparadas à madeira:
 
 **O volume do objeto ativo** é mostrado em tempo real, sem botão para clicar — selecione qualquer coisa na viewport e o volume aparece direto em cm³. Selecione um parafuso para ver com o que está lidando, selecione uma tábua para comparar.
@@ -1431,6 +1502,8 @@ Nada disso requer que um material já esteja atribuído — o volume é lido dir
 ### <a id="help-materials-pt"></a>Materiais e preços
 
 **Material** no CutVisor significa uma espécie de madeira com suas propriedades físicas: densidade (quanto pesa por metro cúbico) e preço (quanto custa por unidade). Você pode precificar por quilograma, por metro cúbico, ou por peça — o que corresponder à forma como seu fornecedor fatura.
+
+<figure class="cv-shot"><a href="img/tab-materials.png"><img src="img/tab-materials.png" alt="Aba Materials: um material com sua espécie, densidade e preço e, abaixo, os tamanhos de estoque que o fornecedor vende."></a><figcaption>Aba Materials: um material com sua espécie, densidade e preço e, abaixo, os tamanhos de estoque que o fornecedor vende.</figcaption></figure>
 
 A **densidade** é usada para duas coisas: calcular a massa de cada peça (útil para verificações estruturais e logística) e calcular o custo quando você precifica por peso. Predefinições já incluídas cobrem as espécies mais comuns. Se você trabalha com uma espécie que não está na lista, insere a densidade manualmente — é a densidade seca da madeira, disponível na ficha técnica de qualquer fornecedor ou na norma EN 338 para madeira estrutural.
 
@@ -1450,6 +1523,8 @@ A lista de estoque é salva junto com seu arquivo do Blender. Você a monta uma 
 
 O otimizador responde a uma única pergunta: dadas as peças de que preciso e as tábuas disponíveis, qual é a forma mais eficiente de cortar?
 
+<figure class="cv-shot"><a href="img/tab-planning.png"><img src="img/tab-planning.png" alt="Aba Planning: volume e massa, exportação das listas de materiais, ajustes do otimizador de corte e lista manual de ferragens."></a><figcaption>Aba Planning: volume e massa, exportação das listas de materiais, ajustes do otimizador de corte e lista manual de ferragens.</figcaption></figure>
+
 Funciona em três etapas:
 
 **Etapa 1 — Agrupar por perfil.** Todas as peças que compartilham a mesma largura e espessura entram no mesmo grupo. Uma peça de 700mm e uma de 750mm, ambas em 150×40mm, estão no mesmo grupo e serão cortadas das mesmas tábuas. Uma peça de 700mm em 150×40mm e uma peça de 700mm em 100×50mm estão em grupos diferentes — não é possível cortar uma a partir da outra.
@@ -1459,6 +1534,8 @@ Funciona em três etapas:
 **Etapa 3 — Preencher as tábuas.** Cada peça é colocada na primeira tábua aberta que tenha comprimento restante suficiente. Se nenhuma tábua aberta encaixar, uma nova é aberta. Para escolher qual comprimento de estoque abrir, o otimizador simula todos os comprimentos disponíveis e escolhe aquele que vai aproveitar mais material — não necessariamente o mais curto, nem necessariamente o mais longo.
 
 O resultado é um plano de corte: quais peças vão em qual tábua, em que ordem, com o desperdício no final de cada tábua claramente indicado.
+
+<figure class="cv-shot"><a href="img/shopping-list.png"><img src="img/shopping-list.png" alt="Depois de Generate Shopping List: uma linha por perfil com tábuas, desperdício e custo; uma tábua aberta com suas peças, uma delas identificada na viewport."></a><figcaption>Depois de Generate Shopping List: uma linha por perfil com tábuas, desperdício e custo; uma tábua aberta com suas peças, uma delas identificada na viewport.</figcaption></figure>
 
 ### Espessura de corte (Kerf)
 
@@ -1510,6 +1587,8 @@ Definido em 0 (padrão), nenhuma verificação de capacidade é feita.
 
 JARCH Vis é um addon do Blender que cria revestimentos arquitetônicos — siding, pisos, forros de telhado em madeira — como objetos de malha única contendo muitas tábuas individuais. O CutVisor PRO pode dividir esses objetos em peças individuais mensuráveis automaticamente.
 
+<figure class="cv-shot"><a href="img/tab-jarch.png"><img src="img/tab-jarch.png" alt="Aba JARCH Import (Pro): os ajustes de importação e o relatório da última importação."></a><figcaption>Aba JARCH Import (Pro): os ajustes de importação e o relatório da última importação.</figcaption></figure>
+
 O processo de importação trata vários problemas que surgem de como o JARCH cria a geometria:
 
 **Faces espúrias de cortes booleanos.** Quando um revestimento é recortado em volta de janelas ou portas, operações booleanas às vezes deixam faces 2D isoladas — geometria plana sem volume. O CutVisor detecta essas faces (por espessura e planaridade) e as remove antes da contagem.
@@ -1526,9 +1605,13 @@ Depois da importação, as peças aparecem em uma coleção dedicada do Blender,
 
 A aba View controla as etiquetas desenhadas diretamente na viewport 3D para qualquer objeto selecionado. Você pode mostrar qualquer combinação de Part ID, nome do objeto, dimensões e contagem de instâncias. As etiquetas são ancoradas em relação ao painel N (barra lateral direita) ou ao painel T (barra de ferramentas esquerda) — não à borda da tela — então nunca se sobrepõem ao painel do CutVisor nem a nenhum outro painel do Blender, mesmo que você os redimensione.
 
+<figure class="cv-shot"><a href="img/tab-view.png"><img src="img/tab-view.png" alt="Aba View: as quatro predefinições, o que as etiquetas mostram e o estilo do texto."></a><figcaption>Aba View: as quatro predefinições, o que as etiquetas mostram e o estilo do texto.</figcaption></figure>
+
 Opções de sombra e contorno tornam as etiquetas legíveis sobre qualquer cor de fundo. Quatro predefinições de um clique (All, IDs only, Dims+Count, Off) permitem alternar rapidamente entre modos de informação durante uma sessão de trabalho.
 
 Todas as configurações de overlay são atualizadas instantaneamente na viewport quando alteradas — não é preciso mover a câmera para forçar uma atualização.
+
+<figure class="cv-shot cv-wide"><a href="img/viewport-labels.png"><img src="img/viewport-labels.png" alt="As etiquetas na viewport, uma linha por objeto selecionado: Part ID, nome, dimensões e quantidade (×6 para o caibro com Array)."></a><figcaption>As etiquetas na viewport, uma linha por objeto selecionado: Part ID, nome, dimensões e quantidade (×6 para o caibro com Array).</figcaption></figure>
 
 ### A pasta de exportação
 
@@ -1574,6 +1657,8 @@ Depois de gerar uma lista de compras, **Exportar planos de corte** (aba Planejam
 
 Ao lado do SVG é gravado um arquivo DXF R12 com o mesmo conteúdo, para máquinas CNC e seccionadoras que importam listas de corte. Os dois arquivos vão para a pasta de exportação, e nada é gerado até você clicar no botão.
 
+<figure class="cv-shot cv-wide"><a href="img/cut-sheet.png"><img src="img/cut-sheet.png" alt="Parte de um plano de corte (SVG): cada tábua em escala, as peças na ordem de corte com os cortes numerados e a sobra hachurada."></a><figcaption>Parte de um plano de corte (SVG): cada tábua em escala, as peças na ordem de corte com os cortes numerados e a sobra hachurada.</figcaption></figure>
+
 ### Modo identificação <span class="cv-new" data-v="1.0.2">(novo)</span>
 
 No relatório de Planejamento, cada tábua pode ser expandida (▶) para listar suas peças. Clique em uma peça — ou em uma linha da seção de peças sem correspondência — e o CutVisor seleciona esse objeto na viewport e mostra sobre ele um único rótulo pequeno (ID de peça · comprimento). Shift-clique adiciona à seleção. O rótulo desaparece sozinho assim que o objeto é desmarcado ou ocultado, então a viewport nunca se enche de texto.
@@ -1591,6 +1676,8 @@ Há dois botões pequenos à direita do cabeçalho do painel CutVisor. **?** abr
 Uma estrutura de madeira raramente está pronta quando é cortada. Ela recebe um biocida contra insetos e fungos, às vezes um retardante de fogo, um primer e tinta, stain ou verniz — e cada um desses produtos é comprado em latas, com um consumo que depende da madeira. A aba **Acabamentos** transforma o modelo 3D nessas quantidades.
 
 A área a tratar está disponível no Core. Todo o resto deste capítulo é um recurso Pro.
+
+<figure class="cv-shot"><a href="img/tab-finishes.png"><img src="img/tab-finishes.png" alt="Aba Acabamentos (Pro): um sistema de acabamento com suas etapas em ordem — biocida, retardante de fogo, primer, tinta."></a><figcaption>Aba Acabamentos (Pro): um sistema de acabamento com suas etapas em ordem — biocida, retardante de fogo, primer, tinta.</figcaption></figure>
 
 ### Área a tratar (Core)
 
@@ -1645,6 +1732,8 @@ Essas não são lacunas esquecidas. Elas definem o limite do que o CutVisor prom
 ## <a id="help-settings-pt"></a>Ativação — Core e Pro
 
 O CutVisor é distribuído como um único addon. Instalado sem chave de licença, ele funciona em modo Core. Inserir uma chave Pro válida no **menu da engrenagem (⚙) → Inserir chave** desbloqueia todos os recursos Pro instantaneamente — sem precisar reiniciar.
+
+<figure class="cv-shot"><a href="img/settings-menu.png"><img src="img/settings-menu.png" alt="O menu da engrenagem (⚙): idioma, unidades da cena e licença. Sem chave, indica Core, com Paste key e Enter key."></a><figcaption>O menu da engrenagem (⚙): idioma, unidades da cena e licença. Sem chave, indica Core, com Paste key e Enter key.</figcaption></figure>
 
 A chave de licença tem o formato `CWTW-XXXX-XXXX-XXXX-XXXX`. Ela é validada localmente por meio de uma assinatura criptográfica — nenhuma conexão à internet é necessária para a ativação ou para o uso contínuo.
 
