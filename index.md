@@ -497,6 +497,16 @@ This warning exists because ripping on a table saw is a different operation from
 
 Set to 0 (the default), no capacity check is performed.
 
+### The cut list in the panel <span class="cv-new" data-v="1.0.4">(new)</span>
+
+After **Generate Shopping List**, the Planning tab shows the cut list. Each profile has one row: profile, material, number of boards, average waste and cost. Click the arrow at the start of the row to list its boards.
+
+<figure class="cv-shot"><a href="img/cut-list.png"><img src="img/cut-list.png" alt="The cut list: the 150×40 profile opened, board 1 with two pieces in cutting order, board 5 with a 30 % leftover."></a><figcaption>The cut list: the 150×40 profile opened, board 1 with two pieces in cutting order, board 5 with a 30 % leftover.</figcaption></figure>
+
+Each board row gives the board number and its stock length, a fill bar (solid = used, hatched = leftover), the waste percentage and the lengths of its pieces in brackets. The mark in front tells you how much is left over: ✓ under 20 %, ◇ from 20 to 40 %, ⚠ above.
+
+Open a board (▶) to see its pieces in cutting order, each with its Part ID and length. Pieces from an Array modifier carry their instance number, as in P-00007[2]. Click a piece to find it in the viewport (see Identify mode). The same plan is in Section 2 of the exported CSV and, drawn to scale, on the cut sheets.
+
 ### <a id="help-jarch-en"></a>JARCH Vis import (PRO)
 
 JARCH Vis is a Blender addon that creates architectural cladding — siding, floors, roof boarding — as single mesh objects containing many individual boards. CutVisor PRO can split these objects into individual measurable pieces automatically.
@@ -565,7 +575,7 @@ If you work with **Geometry Nodes** to create arrays, CutVisor detects the modif
 
 Both files are saved as UTF-8 text with a leading byte-order mark, which means they open correctly in Excel on all operating systems without character encoding problems.
 
-### Cut sheets (SVG and DXF) <span class="cv-new" data-v="1.0.2">(new)</span>
+### Cut sheets (SVG and DXF)
 
 After generating a shopping list, **Export Cut Sheets** (Planning tab, next to Export CSV) writes a printable diagram of every board. Each board is drawn to scale as a bar, with its pieces placed in cutting order from left to right and separated by the kerf. Every piece shows its Part ID (or object name) and length, the cuts are numbered 1, 2, 3… per board, and the leftover is hatched with its length. Rip-to-width and splice warnings appear directly on the drawing.
 
@@ -573,19 +583,19 @@ A DXF R12 file with the same content is written next to the SVG, for CNC and pan
 
 <figure class="cv-shot cv-wide"><a href="img/cut-sheet.png"><img src="img/cut-sheet.png" alt="Part of a cut sheet (SVG): each board drawn to scale, pieces in cutting order with numbered cuts, the leftover hatched."></a><figcaption>Part of a cut sheet (SVG): each board drawn to scale, pieces in cutting order with numbered cuts, the leftover hatched.</figcaption></figure>
 
-### Identify mode <span class="cv-new" data-v="1.0.2">(new)</span>
+### Identify mode
 
 In the Planning report, every board can be expanded (▶) to list its pieces. Click a piece — or a row in the Unmatched section — and CutVisor selects that object in the viewport and shows one small label on it (Part ID · length). Shift-click adds to the selection. The label disappears by itself as soon as the object is deselected or hidden, so the viewport never fills up with text.
 
-### Hardware list (manual) <span class="cv-new" data-v="1.0.2">(new)</span>
+### Hardware list (manual)
 
 Below the cut optimizer, the **Hardware (manual)** box keeps a simple list of what you will buy besides timber — screws, bolts, hinges, brackets: item, specification, quantity, unit price and currency. Totals per currency are shown live, and the list is added as a HARDWARE section to the Shopping List CSV and to the Consolidated BOM. There is no automatic detection and no structural check: you type in what you intend to buy.
 
-### Help and settings <span class="cv-new" data-v="1.0.2">(new)</span>
+### Help and settings
 
 Two small buttons sit on the right of the CutVisor panel header. **?** opens this guide in the interface language (English, French, Spanish or Portuguese; the other languages open the English version) at the section for the tab you are in. The **gear** opens the settings menu, which replaces the former Settings tab: the installed version, language, scene units and licence at the top, then collapsible sections for the default currency, CSV import and export of materials and stock, auto-assigning materials from imported models, the translations CSV and (Pro) your saved material presets. The tabs are now Materials · Parts · JARCH Import on the first row and Planning · Finishes · View on the second.
 
-## <a id="help-finish-en"></a>Finishes — paint, primer and treatments <span class="cv-new" data-v="1.0.2">(new)</span>
+## <a id="help-finish-en"></a>Finishes — paint, primer and treatments
 
 A timber structure is rarely finished when it is cut. It gets a biocide against insects and fungi, sometimes a fire retardant, a primer, and paint, stain or varnish — and every one of these is bought in cans, with a consumption that depends on the wood. The **Finishes** tab turns the 3D model into those quantities.
 
@@ -859,6 +869,16 @@ Cet avertissement existe parce que refendre à la scie à format est une opérat
 
 Réglé à 0 (valeur par défaut), aucune vérification de capacité n'est effectuée.
 
+### La liste de débit dans le panneau <span class="cv-new" data-v="1.0.4">(nouveau)</span>
+
+Après **Générer la liste d'achat**, l'onglet Planning affiche la liste de débit. Chaque profil occupe une ligne : profil, matériau, nombre de planches, chute moyenne et coût. Cliquez sur la flèche en début de ligne pour lister ses planches.
+
+<figure class="cv-shot"><a href="img/cut-list.png"><img src="img/cut-list.png" alt="La liste de débit : le profil 150×40 déplié, la planche 1 avec deux pièces dans l'ordre de coupe, la planche 5 avec 30 % de chute."></a><figcaption>La liste de débit : le profil 150×40 déplié, la planche 1 avec deux pièces dans l'ordre de coupe, la planche 5 avec 30 % de chute.</figcaption></figure>
+
+Chaque ligne de planche donne le numéro de la planche et sa longueur de stock, une barre de remplissage (pleine = utilisée, hachurée = chute), le pourcentage de chute et, entre crochets, les longueurs de ses pièces. Le signe en tête indique la chute : ✓ moins de 20 %, ◇ de 20 à 40 %, ⚠ au-delà.
+
+Dépliez une planche (▶) pour voir ses pièces dans l'ordre de coupe, chacune avec son ID de pièce et sa longueur. Les pièces issues d'un modificateur Array portent leur numéro d'instance, par exemple P-00007[2]. Cliquez sur une pièce pour la retrouver dans la vue 3D (voir Mode identification). Le même plan figure dans la section 2 du CSV exporté et, dessiné à l'échelle, sur les plans de coupe.
+
 ### <a id="help-jarch-fr"></a>Import JARCH Vis (PRO)
 
 JARCH Vis est une extension Blender qui crée des revêtements architecturaux — bardage, planchers, toitures en bois — sous forme d'objets mesh uniques contenant de nombreuses planches individuelles. CutVisor PRO peut diviser automatiquement ces objets en pièces individuelles mesurables.
@@ -927,7 +947,7 @@ Si vous utilisez les **Geometry Nodes** pour créer des réseaux, CutVisor déte
 
 Les deux fichiers sont enregistrés en texte UTF-8 avec une marque d'ordre des octets (BOM) en en-tête, ce qui leur permet de s'ouvrir correctement dans Excel sur tous les systèmes d'exploitation sans problème d'encodage de caractères.
 
-### Plans de coupe (SVG et DXF) <span class="cv-new" data-v="1.0.2">(nouveau)</span>
+### Plans de coupe (SVG et DXF)
 
 Après avoir généré une liste d'achats, **Exporter les plans de coupe** (onglet Planification, à côté d'Exporter CSV) produit un schéma imprimable de chaque planche. Chaque planche est dessinée à l'échelle sous forme de barre, avec ses pièces placées dans l'ordre de coupe, de gauche à droite, séparées par le trait de scie. Chaque pièce affiche son ID de pièce (ou le nom de l'objet) et sa longueur, les coupes sont numérotées 1, 2, 3… par planche, et la chute est hachurée avec sa longueur. Les avertissements de refente et de jonction apparaissent directement sur le dessin.
 
@@ -935,19 +955,19 @@ Un fichier DXF R12 au même contenu est écrit à côté du SVG, pour les machin
 
 <figure class="cv-shot cv-wide"><a href="img/cut-sheet.png"><img src="img/cut-sheet.png" alt="Extrait d'un plan de coupe (SVG) : chaque planche à l'échelle, les pièces dans l'ordre de coupe avec les coupes numérotées, la chute hachurée."></a><figcaption>Extrait d'un plan de coupe (SVG) : chaque planche à l'échelle, les pièces dans l'ordre de coupe avec les coupes numérotées, la chute hachurée.</figcaption></figure>
 
-### Mode identification <span class="cv-new" data-v="1.0.2">(nouveau)</span>
+### Mode identification
 
 Dans le rapport de planification, chaque planche peut être dépliée (▶) pour lister ses pièces. Cliquez sur une pièce — ou sur une ligne de la section des pièces non associées — et CutVisor sélectionne l'objet dans la vue 3D et y affiche une seule petite étiquette (ID de pièce · longueur). Maj-clic ajoute à la sélection. L'étiquette disparaît d'elle-même dès que l'objet est désélectionné ou masqué, la vue 3D ne se remplit donc jamais de texte.
 
-### Liste de quincaillerie (manuelle) <span class="cv-new" data-v="1.0.2">(nouveau)</span>
+### Liste de quincaillerie (manuelle)
 
 Sous l'optimiseur de coupe, le cadre **Quincaillerie (manuelle)** tient une liste simple de ce que vous achèterez en plus du bois — vis, boulons, charnières, équerres : article, spécification, quantité, prix unitaire et devise. Les totaux par devise s'affichent en direct, et la liste est ajoutée comme section HARDWARE au CSV de la liste d'achats et au BOM consolidé. Il n'y a ni détection automatique ni vérification structurelle : vous saisissez ce que vous comptez acheter.
 
-### Aide et réglages <span class="cv-new" data-v="1.0.2">(nouveau)</span>
+### Aide et réglages
 
 Deux petits boutons se trouvent à droite de l'en-tête du panneau CutVisor. **?** ouvre ce guide dans la langue de l'interface (anglais, français, espagnol ou portugais ; les autres langues ouvrent la version anglaise), à la section de l'onglet où vous vous trouvez. La **roue dentée** ouvre le menu des réglages, qui remplace l'ancien onglet Paramètres : version installée, langue, unités de la scène et licence en haut, puis des sections repliables pour la devise par défaut, l'import et l'export CSV des matériaux et du stock, l'attribution automatique des matériaux des modèles importés, le CSV des traductions et (Pro) vos préréglages de matériaux enregistrés. Les onglets sont désormais Matériaux · Pièces · Import JARCH sur la première ligne et Planification · Finitions · Vue sur la seconde.
 
-## <a id="help-finish-fr"></a>Finitions — peinture, primaire et traitements <span class="cv-new" data-v="1.0.2">(nouveau)</span>
+## <a id="help-finish-fr"></a>Finitions — peinture, primaire et traitements
 
 Une structure en bois est rarement terminée une fois coupée. Elle reçoit un biocide contre les insectes et les champignons, parfois un ignifuge, un primaire, puis une peinture, une lasure ou un vernis — et chacun de ces produits s'achète en pots, avec une consommation qui dépend du bois. L'onglet **Finitions** transforme le modèle 3D en ces quantités.
 
@@ -1173,7 +1193,7 @@ Funciona en tres pasos:
 
 El resultado es un plan de corte: qué piezas van en qué tablón, en qué orden, con el desperdicio al final de cada tablón claramente indicado.
 
-<figure class="cv-shot"><a href="img/shopping-list.png"><img src="img/shopping-list.png" alt="Tras Generate Shopping List: una fila por perfil con tablas, desperdicio y coste; una tabla abierta con sus piezas, una de ellas identificada en el visor 3D."></a><figcaption>Tras Generate Shopping List: una fila por perfil con tablas, desperdicio y coste; una tabla abierta con sus piezas, una de ellas identificada en el visor 3D.</figcaption></figure>
+<figure class="cv-shot"><a href="img/shopping-list.png"><img src="img/shopping-list.png" alt="Tras Generate Shopping List: una fila por perfil con tablones, desperdicio y coste; un tablón abierto con sus piezas, una de ellas identificada en el visor 3D."></a><figcaption>Tras Generate Shopping List: una fila por perfil con tablones, desperdicio y coste; un tablón abierto con sus piezas, una de ellas identificada en el visor 3D.</figcaption></figure>
 
 ### Corte de sierra (Kerf)
 
@@ -1220,6 +1240,16 @@ Este aviso existe porque recortar a medida en la sierra de mesa es una operació
 *"RIP TO WIDTH 280mm → 150mm — EXCEEDS SAW CAPACITY (250mm)"*
 
 Fijado en 0 (valor por defecto), no se realiza ninguna comprobación de capacidad.
+
+### La lista de corte en el panel <span class="cv-new" data-v="1.0.4">(nuevo)</span>
+
+Tras **Generar Lista de Compras**, la pestaña Planning muestra la lista de corte. Cada perfil ocupa una fila: perfil, material, número de tablones, desperdicio medio y coste. Haz clic en la flecha al inicio de la fila para listar sus tablones.
+
+<figure class="cv-shot"><a href="img/cut-list.png"><img src="img/cut-list.png" alt="La lista de corte: el perfil 150×40 desplegado, el tablón 1 con dos piezas en orden de corte, el tablón 5 con un 30 % de sobrante."></a><figcaption>La lista de corte: el perfil 150×40 desplegado, el tablón 1 con dos piezas en orden de corte, el tablón 5 con un 30 % de sobrante.</figcaption></figure>
+
+Cada fila de tablón indica su número y su longitud de stock, una barra de llenado (llena = usada, rayada = sobrante), el porcentaje de desperdicio y, entre corchetes, las longitudes de sus piezas. La marca inicial indica cuánto sobra: ✓ menos del 20 %, ◇ del 20 al 40 %, ⚠ más.
+
+Despliega un tablón (▶) para ver sus piezas en orden de corte, cada una con su ID de pieza y su longitud. Las piezas de un modificador Array llevan su número de instancia, como P-00007[2]. Haz clic en una pieza para encontrarla en el visor (ver Modo identificación). El mismo plan está en la sección 2 del CSV exportado y, dibujado a escala, en los planos de corte.
 
 ### <a id="help-jarch-es"></a>Importación JARCH Vis (PRO)
 
@@ -1289,27 +1319,27 @@ Si trabajas con **Geometry Nodes** para crear arrays, CutVisor detecta el modifi
 
 Ambos archivos se guardan como texto UTF-8 con una marca de orden de bytes (BOM) al inicio, lo que permite que se abran correctamente en Excel en todos los sistemas operativos sin problemas de codificación de caracteres.
 
-### Planos de corte (SVG y DXF) <span class="cv-new" data-v="1.0.2">(nuevo)</span>
+### Planos de corte (SVG y DXF)
 
 Después de generar una lista de compras, **Exportar planos de corte** (pestaña Planificación, junto a Exportar CSV) crea un esquema imprimible de cada tablón. Cada tablón se dibuja a escala como una barra, con sus piezas colocadas en orden de corte de izquierda a derecha y separadas por el ancho de la sierra. Cada pieza muestra su ID de pieza (o el nombre del objeto) y su longitud, los cortes se numeran 1, 2, 3… por tablón y el sobrante aparece rayado con su longitud. Los avisos de corte al hilo y de empalme aparecen directamente en el dibujo.
 
 Junto al SVG se escribe un archivo DXF R12 con el mismo contenido, para máquinas CNC y seccionadoras que importan listas de corte. Ambos archivos van a la carpeta de exportación y no se genera nada hasta que pulsas el botón.
 
-<figure class="cv-shot cv-wide"><a href="img/cut-sheet.png"><img src="img/cut-sheet.png" alt="Parte de un plano de corte (SVG): cada tabla a escala, las piezas en orden de corte con los cortes numerados y el sobrante rayado."></a><figcaption>Parte de un plano de corte (SVG): cada tabla a escala, las piezas en orden de corte con los cortes numerados y el sobrante rayado.</figcaption></figure>
+<figure class="cv-shot cv-wide"><a href="img/cut-sheet.png"><img src="img/cut-sheet.png" alt="Parte de un plano de corte (SVG): cada tablón a escala, las piezas en orden de corte con los cortes numerados y el sobrante rayado."></a><figcaption>Parte de un plano de corte (SVG): cada tablón a escala, las piezas en orden de corte con los cortes numerados y el sobrante rayado.</figcaption></figure>
 
-### Modo identificación <span class="cv-new" data-v="1.0.2">(nuevo)</span>
+### Modo identificación
 
 En el informe de Planificación, cada tablón puede desplegarse (▶) para listar sus piezas. Haz clic en una pieza — o en una fila de la sección de piezas sin correspondencia — y CutVisor selecciona ese objeto en el visor y muestra sobre él una sola etiqueta pequeña (ID de pieza · longitud). Mayús-clic añade a la selección. La etiqueta desaparece sola en cuanto el objeto se deselecciona u oculta, así que el visor nunca se llena de texto.
 
-### Lista de herrajes (manual) <span class="cv-new" data-v="1.0.2">(nuevo)</span>
+### Lista de herrajes (manual)
 
 Debajo del optimizador de corte, el recuadro **Herrajes (manual)** guarda una lista sencilla de lo que comprarás además de la madera — tornillos, pernos, bisagras, escuadras: artículo, especificación, cantidad, precio unitario y moneda. Los totales por moneda se muestran en directo, y la lista se añade como sección HARDWARE al CSV de la lista de compras y al BOM consolidado. No hay detección automática ni comprobación estructural: escribes lo que piensas comprar.
 
-### Ayuda y ajustes <span class="cv-new" data-v="1.0.2">(nuevo)</span>
+### Ayuda y ajustes
 
 A la derecha de la cabecera del panel CutVisor hay dos botones pequeños. **?** abre esta guía en el idioma de la interfaz (inglés, francés, español o portugués; los demás idiomas abren la versión inglesa), en la sección de la pestaña en la que estás. La **rueda dentada** abre el menú de ajustes, que sustituye a la antigua pestaña Configuración: versión instalada, idioma, unidades de la escena y licencia arriba, y después secciones plegables para la moneda por defecto, la importación y exportación CSV de materiales y stock, la asignación automática de materiales de modelos importados, el CSV de traducciones y (Pro) tus preajustes de materiales guardados. Las pestañas son ahora Materiales · Piezas · Importar JARCH en la primera fila y Planificación · Acabados · Vista en la segunda.
 
-## <a id="help-finish-es"></a>Acabados — pintura, imprimación y tratamientos <span class="cv-new" data-v="1.0.2">(nuevo)</span>
+## <a id="help-finish-es"></a>Acabados — pintura, imprimación y tratamientos
 
 Una estructura de madera rara vez está terminada cuando se corta. Recibe un biocida contra insectos y hongos, a veces un ignífugo, una imprimación y una pintura, lasur o barniz — y cada uno de estos productos se compra en botes, con un consumo que depende de la madera. La pestaña **Acabados** convierte el modelo 3D en esas cantidades.
 
@@ -1583,6 +1613,16 @@ Esse aviso existe porque desdobrar na serra de mesa é uma operação diferente 
 
 Definido em 0 (padrão), nenhuma verificação de capacidade é feita.
 
+### A lista de corte no painel <span class="cv-new" data-v="1.0.4">(novo)</span>
+
+Depois de **Gerar Lista de Compras**, a aba Planning mostra a lista de corte. Cada perfil ocupa uma linha: perfil, material, número de tábuas, desperdício médio e custo. Clique na seta no início da linha para listar suas tábuas.
+
+<figure class="cv-shot"><a href="img/cut-list.png"><img src="img/cut-list.png" alt="A lista de corte: o perfil 150×40 expandido, a tábua 1 com duas peças na ordem de corte, a tábua 5 com 30 % de sobra."></a><figcaption>A lista de corte: o perfil 150×40 expandido, a tábua 1 com duas peças na ordem de corte, a tábua 5 com 30 % de sobra.</figcaption></figure>
+
+Cada linha de tábua mostra o número da tábua e seu comprimento de estoque, uma barra de preenchimento (cheia = usada, hachurada = sobra), a porcentagem de desperdício e, entre colchetes, os comprimentos de suas peças. O sinal no início indica quanto sobra: ✓ menos de 20 %, ◇ de 20 a 40 %, ⚠ acima disso.
+
+Expanda uma tábua (▶) para ver suas peças na ordem de corte, cada uma com seu ID de peça e seu comprimento. As peças de um modificador Array levam seu número de instância, como P-00007[2]. Clique em uma peça para encontrá-la na viewport (veja Modo identificação). O mesmo plano está na seção 2 do CSV exportado e, desenhado em escala, nos planos de corte.
+
 ### <a id="help-jarch-pt"></a>Importação JARCH Vis (PRO)
 
 JARCH Vis é um addon do Blender que cria revestimentos arquitetônicos — siding, pisos, forros de telhado em madeira — como objetos de malha única contendo muitas tábuas individuais. O CutVisor PRO pode dividir esses objetos em peças individuais mensuráveis automaticamente.
@@ -1651,7 +1691,7 @@ Se você trabalha com **Geometry Nodes** para criar arrays, o CutVisor detecta o
 
 Ambos os arquivos são salvos como texto UTF-8 com uma marca de ordem de bytes (BOM) no início, o que faz com que abram corretamente no Excel em todos os sistemas operacionais sem problemas de codificação de caracteres.
 
-### Planos de corte (SVG e DXF) <span class="cv-new" data-v="1.0.2">(novo)</span>
+### Planos de corte (SVG e DXF)
 
 Depois de gerar uma lista de compras, **Exportar planos de corte** (aba Planejamento, ao lado de Exportar CSV) cria um diagrama imprimível de cada tábua. Cada tábua é desenhada em escala como uma barra, com as peças colocadas na ordem de corte, da esquerda para a direita, separadas pela espessura da serra. Cada peça mostra seu ID de peça (ou o nome do objeto) e o comprimento, os cortes são numerados 1, 2, 3… por tábua e a sobra aparece hachurada com seu comprimento. Os avisos de corte longitudinal e de emenda aparecem diretamente no desenho.
 
@@ -1659,19 +1699,19 @@ Ao lado do SVG é gravado um arquivo DXF R12 com o mesmo conteúdo, para máquin
 
 <figure class="cv-shot cv-wide"><a href="img/cut-sheet.png"><img src="img/cut-sheet.png" alt="Parte de um plano de corte (SVG): cada tábua em escala, as peças na ordem de corte com os cortes numerados e a sobra hachurada."></a><figcaption>Parte de um plano de corte (SVG): cada tábua em escala, as peças na ordem de corte com os cortes numerados e a sobra hachurada.</figcaption></figure>
 
-### Modo identificação <span class="cv-new" data-v="1.0.2">(novo)</span>
+### Modo identificação
 
 No relatório de Planejamento, cada tábua pode ser expandida (▶) para listar suas peças. Clique em uma peça — ou em uma linha da seção de peças sem correspondência — e o CutVisor seleciona esse objeto na viewport e mostra sobre ele um único rótulo pequeno (ID de peça · comprimento). Shift-clique adiciona à seleção. O rótulo desaparece sozinho assim que o objeto é desmarcado ou ocultado, então a viewport nunca se enche de texto.
 
-### Lista de ferragens (manual) <span class="cv-new" data-v="1.0.2">(novo)</span>
+### Lista de ferragens (manual)
 
 Abaixo do otimizador de corte, o quadro **Ferragens (manual)** mantém uma lista simples do que você vai comprar além da madeira — parafusos, pinos, dobradiças, cantoneiras: item, especificação, quantidade, preço unitário e moeda. Os totais por moeda aparecem em tempo real, e a lista é adicionada como seção HARDWARE ao CSV da lista de compras e ao BOM consolidado. Não há detecção automática nem verificação estrutural: você digita o que pretende comprar.
 
-### Ajuda e configurações <span class="cv-new" data-v="1.0.2">(novo)</span>
+### Ajuda e configurações
 
 Há dois botões pequenos à direita do cabeçalho do painel CutVisor. **?** abre este guia no idioma da interface (inglês, francês, espanhol ou português; os demais idiomas abrem a versão em inglês), na seção da aba em que você está. A **engrenagem** abre o menu de configurações, que substitui a antiga aba Configurações: versão instalada, idioma, unidades da cena e licença no topo, depois seções recolhíveis para a moeda padrão, a importação e exportação CSV de materiais e estoque, a atribuição automática de materiais de modelos importados, o CSV de traduções e (Pro) suas predefinições de materiais salvas. As abas agora são Materiais · Peças · Importar JARCH na primeira linha e Planejamento · Acabamentos · Visualização na segunda.
 
-## <a id="help-finish-pt"></a>Acabamentos — tinta, primer e tratamentos <span class="cv-new" data-v="1.0.2">(novo)</span>
+## <a id="help-finish-pt"></a>Acabamentos — tinta, primer e tratamentos
 
 Uma estrutura de madeira raramente está pronta quando é cortada. Ela recebe um biocida contra insetos e fungos, às vezes um retardante de fogo, um primer e tinta, stain ou verniz — e cada um desses produtos é comprado em latas, com um consumo que depende da madeira. A aba **Acabamentos** transforma o modelo 3D nessas quantidades.
 

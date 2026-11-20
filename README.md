@@ -58,12 +58,16 @@ CutVisor is a Blender addon for timber structure projects. Assign part IDs to yo
 >
 > **Pro users:** click the gear (⚙) in the CutVisor panel header → **License** → paste or enter your activation key → Pro features unlock instantly.
 
+<img src="img/settings-menu.png" width="360" alt="The gear menu: language, scene units and licence (Paste key / Enter key)">
+
 ---
 
 ## Quick Start
 
 ### 1. Add a material
 Go to **Materials tab** → **+** → set name, density, pricing mode and stock sizes.
+
+<img src="img/tab-materials.png" width="360" alt="Materials tab: a material and its stock sizes">
 
 ### 2. Assign materials to objects
 Select your mesh objects → Materials tab → **Assign to Selected**.
@@ -73,17 +77,30 @@ Select your mesh objects → Materials tab → **Assign to Selected**.
 
 The status bar shows how many objects have IDs and flags any without a material assigned.
 
+<img src="img/tab-parts.png" width="360" alt="Parts tab: Volume Filter, Generate Part IDs and the components list">
+
 ### 4. Export BOM
 **Planning tab** → **Export Detailed BOM** or **Export Consolidated BOM** — saves a CSV file next to your .blend file.
 
 ### 5. Generate Shopping List
 **Planning tab** → set kerf, stock bonus and tolerance → **Generate Shopping List** — runs the cut optimizer; **Export CSV** saves a timestamped file with the full cut plan.
 
+<img src="img/tab-planning.png" width="360" alt="Planning tab: cut optimizer settings and the hardware list"> <img src="img/cut-list.png" width="360" alt="The cut list: boards, fill bars, waste and pieces in cutting order">
+
 ### 6. Print the cut sheets
 **Planning tab** → **Export Cut Sheets** — an SVG diagram of every board (to scale, with Part IDs and cut order) and a DXF for CNC or panel saws.
 
+<img src="img/cut-sheet.png" width="760" alt="Part of a cut sheet: boards to scale, pieces in cutting order, leftovers hatched">
+
 ### 7. Finishes (optional)
 **Finishes tab** → **Calculate area (selection)** gives the surface to paint or treat. With Pro, define products and finish systems and get the quantities, the packages to buy and their cost — for a new build or for maintenance of an existing structure. See the [user guide](https://raduandrei-source.github.io/CutVisor/) for details.
+
+<img src="img/tab-finishes.png" width="360" alt="Finishes tab: a finish system with its steps">
+
+### Labels in the viewport
+**View tab** → choose what to show (Part ID, name, dimensions, count) for the selected objects.
+
+<img src="img/viewport-labels.png" width="760" alt="Viewport labels for the selected pieces">
 
 ---
 
