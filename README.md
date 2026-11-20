@@ -100,7 +100,7 @@ CutVisor reads instance counts and dimensions from:
 
 ## Compatibility
 
-- Blender **4.0 and newer**, including **5.x** (v1.0.3 tested on 4.1 – 5.3)
+- Blender **4.0 and newer**, including **5.x** (v1.0.4 tested on 4.1 – 5.3)
 - Windows, macOS, Linux
 - Metric and Imperial units
 
@@ -130,6 +130,13 @@ cutvisor/
 ---
 
 ## Changelog
+
+### v1.0.4
+- Fixed: in the Shopping List report, each group row now starts with the profile (100×100 mm …), so groups can be told apart even in a narrow sidebar; boards, waste % and cost share one label.
+- Fixed: cut sheets (SVG) are drawn in a sans-serif font instead of the browser's serif default.
+- Fixed: cut sheets said "1 pieces"; a board with one piece now says "1 piece".
+- Fixed: pieces from an Array modifier were labelled with the object name (Rafter[1]) on the cut sheets (SVG and DXF) and in the report's piece list; they now show their Part ID with the instance number (P-00007[1]), as Identify does.
+- Fixed: on the cut sheets, the "waste … mm" label could run out of a short leftover; labels are now drawn only where they fit (a short leftover shows just its length).
 
 ### v1.0.3
 - Fixed: in the Shopping List report, the expand arrows of the material groups and of the boards took half of the row, so the board fill bar and the waste % were cut off. The arrows are now small icons and every row shows its full information again.
