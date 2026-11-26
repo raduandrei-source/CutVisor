@@ -674,25 +674,17 @@ A single key is licensed for personal use on computers you own. Keys do not expi
 
 ## Licence
 
-CutVisor uses a dual licence model.
+All of CutVisor's code, Core and Pro features alike, is free software under the GNU General Public License, version 3 or later (GPL-3.0-or-later). The full text is in the project's `LICENSE` file and at https://www.gnu.org/licenses/gpl-3.0.html. You may use, study, change and share the code under the terms of the GPL.
 
-### Core — GNU General Public License v3.0
+CutVisor is distributed without any warranty; see the GPL for details.
 
-The CutVisor Core addon code is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 or later.
+### What you buy with Pro
 
-Full licence text: https://www.gnu.org/licenses/gpl-3.0.html
+The Pro features are part of the same code. Buying Pro gives you a licence key that switches them on in the official add-on, plus updates and support. The key is personal:
 
-### Pro Features — Commercial Licence
-
-The Pro features of CutVisor — CSV import for materials and stock, advanced overlay styling, wood species presets, saved custom material presets, width variation and rip/cross-cut limits, multi-board splicing, JARCH Vis import, the Finishes module (products, finish systems, quantities and maintenance mode), and all features unlocked by a `CWTW-…` activation key — are not covered by the GPL.
-
-By purchasing a Pro key you agree to the following terms:
-
-- The key is a single-user, non-transferable licence
-- You may install and use CutVisor Pro on computers you personally own or control
-- Redistribution of Pro activation keys is strictly prohibited
-- Reverse-engineering or bypassing the activation system is not permitted
-- The Pro licence does not expire; future updates are provided at the author's discretion
+- one key per user, for the computers you own or control
+- please do not share or publish your key
+- the key does not expire; future updates are provided at the author's discretion
 
 ---
 
@@ -1046,25 +1038,17 @@ Une clé unique est licenciée pour un usage personnel sur les ordinateurs que v
 
 ## Licence
 
-CutVisor utilise un modèle de licence double.
+Tout le code de CutVisor, fonctionnalités Core et Pro comprises, est un logiciel libre sous la GNU General Public License, version 3 ou ultérieure (GPL-3.0-or-later). Le texte complet se trouve dans le fichier `LICENSE` du projet et sur https://www.gnu.org/licenses/gpl-3.0.html. Vous pouvez utiliser, étudier, modifier et partager le code selon les termes de la GPL.
 
-### Core — GNU General Public License v3.0
+CutVisor est distribué sans aucune garantie ; voir la GPL pour les détails.
 
-Le code de l'extension CutVisor Core est un logiciel libre : vous pouvez le redistribuer et/ou le modifier selon les termes de la GNU General Public License publiée par la Free Software Foundation, version 3 ou ultérieure.
+### Ce que vous achetez avec Pro
 
-Texte complet de la licence : https://www.gnu.org/licenses/gpl-3.0.html
+Les fonctionnalités Pro font partie du même code. L'achat de Pro vous donne une clé de licence qui les active dans l'extension officielle, ainsi que les mises à jour et l'assistance. La clé est personnelle :
 
-### Fonctionnalités Pro — Licence commerciale
-
-Les fonctionnalités Pro de CutVisor — import CSV pour matériaux et stock, style d'affichage avancé, préréglages d'essences de bois, préréglages de matériaux personnalisés enregistrés, variation de largeur et limites de refente/tronçonnage, jonction de planches multiples, import JARCH Vis, le module Finitions (produits, systèmes de finition, quantités et mode entretien), et toutes les fonctionnalités débloquées par une clé d'activation `CWTW-…` — ne sont pas couvertes par la GPL.
-
-En achetant une clé Pro, vous acceptez les conditions suivantes :
-
-- La clé est une licence mono-utilisateur, non transférable
-- Vous pouvez installer et utiliser CutVisor Pro sur des ordinateurs que vous possédez ou contrôlez personnellement
-- La redistribution des clés d'activation Pro est strictement interdite
-- L'ingénierie inverse ou le contournement du système d'activation n'est pas autorisé
-- La licence Pro n'expire pas ; les futures mises à jour sont fournies à la discrétion de l'auteur
+- une clé par utilisateur, pour les ordinateurs que vous possédez ou contrôlez
+- merci de ne pas partager ni publier votre clé
+- la clé n'expire pas ; les futures mises à jour sont fournies à la discrétion de l'auteur
 
 ---
 
@@ -1418,25 +1402,17 @@ Una clave se licencia para uso personal en ordenadores que poseas. Las claves no
 
 ## Licencia
 
-CutVisor usa un modelo de licencia dual.
+Todo el código de CutVisor, funciones Core y Pro por igual, es software libre bajo la GNU General Public License, versión 3 o posterior (GPL-3.0-or-later). El texto completo está en el archivo `LICENSE` del proyecto y en https://www.gnu.org/licenses/gpl-3.0.html. Puedes usar, estudiar, modificar y compartir el código según los términos de la GPL.
 
-### Core — GNU General Public License v3.0
+CutVisor se distribuye sin ninguna garantía; consulta la GPL para más detalles.
 
-El código de CutVisor Core es software libre: puedes redistribuirlo y/o modificarlo según los términos de la GNU General Public License publicada por la Free Software Foundation, versión 3 o posterior.
+### Qué compras con Pro
 
-Texto completo de la licencia: https://www.gnu.org/licenses/gpl-3.0.html
+Las funciones Pro forman parte del mismo código. Al comprar Pro recibes una clave de licencia que las activa en el complemento oficial, además de actualizaciones y soporte. La clave es personal:
 
-### Funciones Pro — Licencia comercial
-
-Las funciones Pro de CutVisor — importación CSV para materiales y stock, estilo de superposición avanzado, preajustes de especies de madera, preajustes de materiales personalizados guardados, variación de ancho y límites de recorte/corte transversal, empalme de varios tablones, importación JARCH Vis, el módulo Acabados (productos, sistemas de acabado, cantidades y modo mantenimiento), y todas las funciones desbloqueadas por una clave de activación `CWTW-…` — no están cubiertas por la GPL.
-
-Al comprar una clave Pro aceptas los siguientes términos:
-
-- La clave es una licencia de un solo usuario, no transferible
-- Puedes instalar y usar CutVisor Pro en ordenadores que poseas o controles personalmente
-- Está estrictamente prohibida la redistribución de claves de activación Pro
-- No está permitida la ingeniería inversa ni eludir el sistema de activación
-- La licencia Pro no caduca; las futuras actualizaciones se proporcionan a discreción del autor
+- una clave por usuario, para los ordenadores que posees o controlas
+- por favor, no compartas ni publiques tu clave
+- la clave no caduca; las futuras actualizaciones se proporcionan a discreción del autor
 
 ---
 
@@ -1790,25 +1766,17 @@ Uma única chave é licenciada para uso pessoal em computadores que você possui
 
 ## Licença
 
-O CutVisor usa um modelo de licença dual.
+Todo o código do CutVisor, recursos Core e Pro igualmente, é software livre sob a GNU General Public License, versão 3 ou posterior (GPL-3.0-or-later). O texto completo está no arquivo `LICENSE` do projeto e em https://www.gnu.org/licenses/gpl-3.0.html. Você pode usar, estudar, modificar e compartilhar o código nos termos da GPL.
 
-### Core — GNU General Public License v3.0
+O CutVisor é distribuído sem nenhuma garantia; consulte a GPL para mais detalhes.
 
-O código do CutVisor Core é software livre: você pode redistribuí-lo e/ou modificá-lo nos termos da GNU General Public License publicada pela Free Software Foundation, versão 3 ou posterior.
+### O que você compra com o Pro
 
-Texto completo da licença: https://www.gnu.org/licenses/gpl-3.0.html
+Os recursos Pro fazem parte do mesmo código. Ao comprar o Pro, você recebe uma chave de licença que os ativa no add-on oficial, além de atualizações e suporte. A chave é pessoal:
 
-### Recursos Pro — Licença comercial
-
-Os recursos Pro do CutVisor — importação CSV para materiais e estoque, estilo avançado de overlay, predefinições de espécies de madeira, predefinições personalizadas de materiais salvas, variação de largura e limites de desdobramento/corte transversal, emenda de várias tábuas, importação JARCH Vis, o módulo Acabamentos (produtos, sistemas de acabamento, quantidades e modo manutenção), e todos os recursos desbloqueados por uma chave de ativação `CWTW-…` — não são cobertos pela GPL.
-
-Ao comprar uma chave Pro, você concorda com os seguintes termos:
-
-- A chave é uma licença de usuário único, não transferível
-- Você pode instalar e usar o CutVisor Pro em computadores que possui ou controla pessoalmente
-- A redistribuição de chaves de ativação Pro é estritamente proibida
-- Não é permitida engenharia reversa ou contornar o sistema de ativação
-- A licença Pro não expira; atualizações futuras são fornecidas a critério do autor
+- uma chave por usuário, para os computadores que você possui ou controla
+- por favor, não compartilhe nem publique sua chave
+- a chave não expira; atualizações futuras são fornecidas a critério do autor
 
 ---
 

@@ -187,40 +187,27 @@ cutvisor/
 
 ## License
 
-CutVisor uses a dual license model:
-
-### Core — GNU General Public License v3.0
-
-The CutVisor Core addon code is free software: you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
+All of CutVisor's code, Core and Pro features alike, is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public
+License as published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version (GPL-3.0-or-later). See the
+[`LICENSE`](LICENSE) file.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-See the full license text at: https://www.gnu.org/licenses/gpl-3.0.html
+### What you buy with Pro
 
-### Pro Features — Commercial License
+The Pro features are part of the same code. Buying Pro gives you a licence
+key that switches them on in the official add-on, plus updates and support.
+The key is personal:
 
-The Pro features of CutVisor (CSV import for materials and stock,
-advanced overlay styling, wood species presets, width variation and
-rip/cross-cut limits, multi-board splicing, JARCH Vis import, the Finishes
-module (products, finish systems, quantities and maintenance mode), and all
-features unlocked by a `CWTW-…` activation key) are **not covered by the GPL**.
+- one key per user, for the computers you own or control
+- please do not share or publish your key
+- the key does not expire; future updates are provided at the author's discretion
 
-By purchasing a Pro key you agree to the following terms:
-
-- The key is a **single-user, non-transferable** license
-- You may install and use CutVisor Pro on computers you personally own or control
-- **Redistribution of Pro activation keys is strictly prohibited**
-- Reverse-engineering or bypassing the activation system to unlock Pro
-  features without a valid key is not permitted
-- The Pro license does not expire; future updates are provided at the
-  author's discretion
-
-To purchase a Pro key: [CutVisor Pro on Gumroad](https://cutvisor.gumroad.com/l/yiqahd)
+To buy a Pro key: [CutVisor Pro on Gumroad](https://cutvisor.gumroad.com/l/yiqahd)
 
 ---
 
