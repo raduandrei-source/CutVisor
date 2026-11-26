@@ -497,7 +497,7 @@ This warning exists because ripping on a table saw is a different operation from
 
 Set to 0 (the default), no capacity check is performed.
 
-### The cut list in the panel <span class="cv-new" data-v="1.0.4">(new)</span>
+### The cut list in the panel
 
 After **Generate Shopping List**, the Planning tab shows the cut list. Each profile has one row: profile, material, number of boards, average waste and cost. Click the arrow at the start of the row to list its boards.
 
@@ -659,7 +659,7 @@ CutVisor is distributed as a single add-on package. When installed without a lic
 
 <figure class="cv-shot"><a href="img/settings-menu.png"><img src="img/settings-menu.png" alt="The gear menu (⚙): language, scene units and licence. Without a key it reads Core, with Paste key and Enter key."></a><figcaption>The gear menu (⚙): language, scene units and licence. Without a key it reads Core, with Paste key and Enter key.</figcaption></figure>
 
-The licence key has the format `CWTW-XXXX-XXXX-XXXX-XXXX`. It is validated locally using a cryptographic signature — no internet connection is required for activation or for continued use.
+The licence key is the one Gumroad gives you with your purchase, in the format `XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX`. It is checked online once, when you enter it. After that CutVisor remembers it, and Pro keeps working offline. Since 1.0.5 the old `CWTW-…` keys are no longer accepted; use the licence key from your Gumroad receipt or library instead.
 
 **To activate Pro:**
 1. Purchase a key at https://cutvisor.gumroad.com/l/yiqahd
@@ -861,7 +861,7 @@ Cet avertissement existe parce que refendre à la scie à format est une opérat
 
 Réglé à 0 (valeur par défaut), aucune vérification de capacité n'est effectuée.
 
-### La liste de débit dans le panneau <span class="cv-new" data-v="1.0.4">(nouveau)</span>
+### La liste de débit dans le panneau
 
 Après **Générer la liste d'achat**, l'onglet Planning affiche la liste de débit. Chaque profil occupe une ligne : profil, matériau, nombre de planches, chute moyenne et coût. Cliquez sur la flèche en début de ligne pour lister ses planches.
 
@@ -1023,7 +1023,7 @@ CutVisor est distribué comme une extension unique. Installée sans clé de lice
 
 <figure class="cv-shot"><a href="img/settings-menu.png"><img src="img/settings-menu.png" alt="Le menu roue dentée (⚙) : langue, unités de la scène et licence. Sans clé, il indique Core, avec Paste key et Enter key."></a><figcaption>Le menu roue dentée (⚙) : langue, unités de la scène et licence. Sans clé, il indique Core, avec Paste key et Enter key.</figcaption></figure>
 
-La clé de licence a le format `CWTW-XXXX-XXXX-XXXX-XXXX`. Elle est validée localement via une signature cryptographique — aucune connexion internet n'est nécessaire pour l'activation ou l'utilisation continue.
+La clé de licence est celle que Gumroad vous donne avec votre achat, au format `XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX`. Elle est vérifiée en ligne une seule fois, quand vous la saisissez. Ensuite CutVisor la garde en mémoire et Pro continue de fonctionner hors ligne. Depuis la version 1.0.5, les anciennes clés `CWTW-…` ne sont plus acceptées ; utilisez la clé de licence de votre reçu ou de votre bibliothèque Gumroad.
 
 **Pour activer Pro :**
 1. Achetez une clé sur https://cutvisor.gumroad.com/l/yiqahd
@@ -1225,7 +1225,7 @@ Este aviso existe porque recortar a medida en la sierra de mesa es una operació
 
 Fijado en 0 (valor por defecto), no se realiza ninguna comprobación de capacidad.
 
-### La lista de corte en el panel <span class="cv-new" data-v="1.0.4">(nuevo)</span>
+### La lista de corte en el panel
 
 Tras **Generar Lista de Compras**, la pestaña Planning muestra la lista de corte. Cada perfil ocupa una fila: perfil, material, número de tablones, desperdicio medio y coste. Haz clic en la flecha al inicio de la fila para listar sus tablones.
 
@@ -1387,7 +1387,7 @@ CutVisor se distribuye como un único complemento. Instalado sin clave de licenc
 
 <figure class="cv-shot"><a href="img/settings-menu.png"><img src="img/settings-menu.png" alt="El menú de la rueda dentada (⚙): idioma, unidades de la escena y licencia. Sin clave indica Core, con Paste key y Enter key."></a><figcaption>El menú de la rueda dentada (⚙): idioma, unidades de la escena y licencia. Sin clave indica Core, con Paste key y Enter key.</figcaption></figure>
 
-La clave de licencia tiene el formato `CWTW-XXXX-XXXX-XXXX-XXXX`. Se valida localmente mediante una firma criptográfica — no se requiere conexión a internet para la activación ni para el uso continuado.
+La clave de licencia es la que Gumroad te da con tu compra, con el formato `XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX`. Se comprueba en línea una sola vez, cuando la introduces. Después CutVisor la recuerda y Pro sigue funcionando sin conexión. Desde la versión 1.0.5 las antiguas claves `CWTW-…` ya no se aceptan; usa la clave de licencia de tu recibo o de tu biblioteca de Gumroad.
 
 **Para activar Pro:**
 1. Compra una clave en https://cutvisor.gumroad.com/l/yiqahd
@@ -1589,7 +1589,7 @@ Esse aviso existe porque desdobrar na serra de mesa é uma operação diferente 
 
 Definido em 0 (padrão), nenhuma verificação de capacidade é feita.
 
-### A lista de corte no painel <span class="cv-new" data-v="1.0.4">(novo)</span>
+### A lista de corte no painel
 
 Depois de **Gerar Lista de Compras**, a aba Planning mostra a lista de corte. Cada perfil ocupa uma linha: perfil, material, número de tábuas, desperdício médio e custo. Clique na seta no início da linha para listar suas tábuas.
 
@@ -1751,7 +1751,7 @@ O CutVisor é distribuído como um único addon. Instalado sem chave de licença
 
 <figure class="cv-shot"><a href="img/settings-menu.png"><img src="img/settings-menu.png" alt="O menu da engrenagem (⚙): idioma, unidades da cena e licença. Sem chave, indica Core, com Paste key e Enter key."></a><figcaption>O menu da engrenagem (⚙): idioma, unidades da cena e licença. Sem chave, indica Core, com Paste key e Enter key.</figcaption></figure>
 
-A chave de licença tem o formato `CWTW-XXXX-XXXX-XXXX-XXXX`. Ela é validada localmente por meio de uma assinatura criptográfica — nenhuma conexão à internet é necessária para a ativação ou para o uso contínuo.
+A chave de licença é a que o Gumroad fornece com a sua compra, no formato `XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX`. Ela é verificada online uma única vez, quando você a digita. Depois o CutVisor a guarda e o Pro continua funcionando offline. Desde a versão 1.0.5, as antigas chaves `CWTW-…` não são mais aceitas; use a chave de licença do seu recibo ou da sua biblioteca do Gumroad.
 
 **Para ativar o Pro:**
 1. Compre uma chave em https://cutvisor.gumroad.com/l/yiqahd

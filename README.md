@@ -148,6 +148,10 @@ cutvisor/
 
 ## Changelog
 
+### v1.0.5
+- Changed: Pro keys are the Gumroad licence keys from your purchase email or Gumroad library (XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX). The key is checked online once; after that Pro works offline. The old CWTW-… keys are no longer accepted. If you have one, use the licence key from your Gumroad receipt, or write to support.
+- Added: LICENSE file (GPL-3.0-or-later) inside the add-on; all of CutVisor's code is GPL.
+
 ### v1.0.4
 - Fixed: in the Shopping List report, each group row now starts with the profile (100×100 mm …), so groups can be told apart even in a narrow sidebar; boards, waste % and cost share one label.
 - Fixed: cut sheets (SVG) are drawn in a sans-serif font instead of the browser's serif default.
